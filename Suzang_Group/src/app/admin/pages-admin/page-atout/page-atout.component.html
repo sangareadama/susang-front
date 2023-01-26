@@ -1,0 +1,295 @@
+
+<div class="row">
+  <div class="card col-md-10">
+    <p-table [value]="atoutPages" responsiveLayout="scroll">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button pButton pRipple label="Voir page" icon="pi pi-visible" class="p-button-outlined p-button-warning" routerLink="/atouts" ></button>
+           
+        </div>
+      </ng-template>
+      <ng-template   pTemplate="header">
+        <tr >
+          <th style="width:20%" pSortableColumn="titre">Titre <p-sortIcon field="price"></p-sortIcon></th>
+          <th style="width:35%" pSortableColumn="contenu" style="min-width:10rem;">Contenus Gauche<p-sortIcon field="contenu"></p-sortIcon></th>
+          <th style="width:35%" pSortableColumn="contenu" style="min-width:10rem;">Contenus Droit<p-sortIcon field="contenu"></p-sortIcon></th>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-at >
+        <tr>
+          <td ><div class="box" [innerHTML]="at.titre1"></div></td>    
+          <td ><div class="box" [innerHTML]="at.contenu1"> </div></td>
+          <td ><div class="box" [innerHTML]="at.contenu2"> </div></td>
+          <td  >
+            <button pButton pRipple icon="pi pi-pencil" (click)="UpdateatoutPagesDialog = true " (click)="onLoadAtout(at)"  class="p-button-rounded p-button-success" ></button>   
+          </td>
+          <td > 
+            <button type="button"    pButton icon="pi pi-external-link" (click)="visibiliteDialogue=true"  (click)="onLoadAtout(at)" label="View"></button>
+          </td>
+        </tr>
+        
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+
+ <!-- modale de modification -->
+ <p-dialog [(visible)]="UpdateatoutPagesDialog" [style]="{width: '800px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="atoutPageUpdateForm"  >
+      
+      <div class="col-12">
+        <div class=" col-8 field">
+          <label style="font-size:2em;" for="titre">Titre 2 </label>
+          <p-editor  [(ngModel)]="atoutPage.titre1" formControlName="titre1" formControlName="titre1" ></p-editor>
+          <small class="p-error" *ngIf="submitted && !atoutPage.titre1">titre is required.</small>
+        </div>  
+        <br>     
+        <div  class="row">
+          <div class="col-sm-12 col-lg-6 ">
+            <div  class="field">
+              <label style="font-size:2em;" for="titre">Contenu Gauche </label>
+              <p-editor  [(ngModel)]="atoutPage.contenu1" formControlName="contenu1" formControlName="contenu1" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !atoutPage.contenu1">titre is required.</small>
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-6 "> 
+            <div class="field">
+              <label style="font-size:2em;" for="titre">Contenu Droite </label>
+              <p-editor  [(ngModel)]="atoutPage.contenu2" formControlName="contenu2" formControlName="contenu2" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !atoutPage.contenu2">titre is required.</small>
+            </div>
+          </div>
+        </div>
+      </div>    
+    </form>         
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-warning" (click)="UpdateatoutPagesDialog=false" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-outlined" (click)="UpdateAtoutPage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog header="Voir plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [(visible)]="visibiliteDialogue" [style]="{width: '70vw'}" [contentStyle]="{height: '400px'}">
+  
+  <div class="col-8 field">
+    <label style="font-size:2em;" for="titre">Titre  </label>
+    <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+      <div [innerHTML]="atoutPage.titre1"></div>  
+    </p-panel>
+  </div>  
+  <br>     
+  <div  class="row">
+    <div class="col-sm-12 col-lg-6">
+      <div  class="field">
+        <label style="font-size:2em;" for="titre">Contenu Gauche</label>
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Contenus Gauche" [toggleable]="true">
+          <div [innerHTML]="atoutPage.contenu1"></div>  
+        </p-panel>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6"> 
+      <div  class="field">
+        <label  style="font-size:2em;" for="titre">Contenu Droite </label>
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Contenus Droit" [toggleable]="true">
+          <div [innerHTML]="atoutPage.contenu2"></div>  
+        </p-panel>
+      </div> 
+    </div>
+  </div>
+  
+   
+  <ng-template pTemplate="footer">   
+      <button type="button" pButton pRipple icon="pi pi-times" (click)="visibiliteDialogue=false" label="Dismiss" class="p-button-text"></button>
+  </ng-template>
+</p-dialog>
+
+
+
+
+ 
+<!-- <div class="containtFirst" >   
+  <div class="color-overly">
+    <div class="container">
+      <div class="col-md-12" *ngFor="let at of atoutPages">
+        <div class="col-md-8">
+          <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Titre" [toggleable]="true">
+            <p  [innerHTML]="at.titre1"></p>
+          </p-panel>
+        </div> 
+        <br>     
+        <div class="row">
+          <div class="col-md-6">
+            <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu droite" [toggleable]="true">
+                <p [innerHTML]="at.contenu1"></p>
+            </p-panel>
+          </div> 
+          <br>    
+          <div class="col-md-6">
+            <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu gauche" [toggleable]="true">
+                <p [innerHTML]="at.contenu2"></p>
+            </p-panel>
+          </div> 
+
+        </div>
+        <br><br>
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="onLoadAtout(at)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Update Info 
+          </button>
+          <a  id="returnToPage" class="btn btn-warning tooltips" type="button" routerLink="/atouts" ><i class="fa fa-view"></i> Voir la page</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="containtFirst" >
+    <div class="color-overly">
+      <div class="container">
+        <div class="col-12" *ngFor="let at of atouts">
+          <div class="row under-nav">
+            <div class="col-8"> 
+                
+                 <h3>Titre :</h3> 
+                <h1>{{at.titre1}}</h1>
+            </div> 
+          </div>
+          <br> 
+          <div class="row"> 
+            <div class="col-3" id="line">
+            </div>
+          </div> 
+          <br>
+          <div class="row ">
+            <div class="col-11">
+              <br>
+              <h3>Contenu 1:</h3> 
+              <p>{{at.contenu1}}</p>
+            </div>
+            <div class="col-11">
+              
+  
+                <br>
+                <h3>Contenu 2 :</h3> 
+                <p>{{at.contenu2}}</p>
+              </div>
+            <!-- <div class="container" >
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add User
+              </button>       
+           </div> 
+
+
+           <div class="row">
+
+            <div class="col-md-4" >
+              <button type="button" class="btn btn-primary" (click)="onLoadAtout(at)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Update Info 
+            </button>     
+              
+              </div> 
+              <div class="col-md-4">
+                <a  class="btn btn-warning tooltips" type="button" routerLink="/atouts" data-original-title="Delete"><i class="fa fa-view"></i> Voir la page</a>
+              </div>
+
+           </div>
+      </div>
+    
+  </div>
+</div>  -->
+
+      <!-- <div class="formWrapper">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Titre</mat-label>
+            <input matInput required>
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Departement</mat-label>
+            <input matInput required>
+            <mat-select required >
+                <mat-option value="one"> Fiste op </mat-option>
+                <mat-option value="two"> second op </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="ckeditorcontainer">
+            <h1> Ckeditor goes here</h1>
+        </div>
+      
+      </div>
+      <br>
+      <button mat-stroked-button>Submit</button>
+      
+    </div> -->
+
+
+    
+<!-- Modal 1 -->
+<!-- <div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div *ngIf="message" class="modal-header">
+            <span class="alert alert-info">{{message}}</span>
+        </div>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Info</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+               <form [formGroup]="atoutForm"  (ngSubmit)="saveOrUpdateAtout()">
+
+                  <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Titre" [toggleable]="true">
+                    <div class="form-floating mb-3">
+                        <!-- <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="atout.titre1" formControlName="titre1"  ></angular-editor> 
+                    </div>  
+                  </p-fieldset>
+
+                  <br>
+                  <p-fieldset  [transitionOptions]="'500ms'" legend="Contenu gauche" [toggleable]="true">
+                    <div class="form-floating mb-3">
+                      <!-- <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="atout.contenu1" formControlName="contenu1"  ></angular-editor> 
+                    </div>
+                  </p-fieldset>
+                  <br>
+
+                  <br>
+                  <p-fieldset  [transitionOptions]="'500ms'"   legend="Contenu droite" [toggleable]="false">
+                    <div class="form-floating mb-3">
+                      <!-- <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="atout.contenu2" formControlName="contenu2"  ></angular-editor> 
+                    </div>
+                  </p-fieldset>
+                  <br>
+
+
+                <!-- <div class="form-floating mb-3">
+                  <input type="text" [(ngModel)]="atout.titre1"  name="titre1"  id="titre1" formControlName="titre1" class="form-control">
+                  <label for="titre1" placeholder="Entrer ici">Titre</label>
+               </div>   
+  
+               <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="atout.contenu1"  name="contenu1" id="contenu1" class="form-control" formControlName="contenu1"  style="height: 200px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 1</label>
+               </div>
+
+               <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="atout.contenu2"  name="contenu2" id="contenu2" class="form-control" formControlName="contenu2"  style="height: 200px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 2</label>
+               </div>
+                 
+             <button   id="btnSend" class="btn btn-primary" type="submit" >Enregistrer</button>
+              </form>  
+        </div>    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"    data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div> 
+  </div>
+  
+    
+ -->

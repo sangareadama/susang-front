@@ -1,0 +1,117 @@
+<body class="bg_image" style="background-image:url(../../assets/images/PAGESITESUZANG-BG-05A.png)">
+
+  <div class="nav">
+    <!-- <app-navbar-shared></app-navbar-shared>  -->
+    <app-navbar-shared></app-navbar-shared>   
+  </div>      
+  
+  <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img src="../../assets/images/RECADRAGE-111.jpg" id="carouselImage" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="../../assets/images/RECADRAGE-121.jpg" id="carouselImage" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" >
+        <img src="../../assets/images/RECADRAGE-101.jpg" id="carouselImage" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+    
+    <!-- <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="../../assets/images/nav_home.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                
+              <h2>Se poser sans s'imposer</h2>
+              <p>Some representative placeholder content for the first slide.</p>
+              
+            </div>
+            
+          </div>
+           <div class="carousel-item" data-bs-interval="2000">
+            <img src="../../assets/images/nav_home1.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+               <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p> 
+            </div>
+          </div> 
+          <div class="carousel-item">
+            <img src="../../assets/images/nav_home2.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>  
+            </div>
+          </div>
+        </div>   
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div> -->
+    <div class="containtFirst" >
+        <div class="color-overly">
+          <div class="container">
+            <div class="col-12"  *ngFor="let at of atouts">
+              <div class="row under-nav" >
+                <div class="col-12">
+                    <!-- <h1 >Une initiation, deux maîtres</h1> -->
+                    <!-- <h1>{{at.titre1}}</h1> -->
+                    <h1 [innerHTML]="at.titre1"></h1>
+                </div>
+              </div>
+              <br>
+              <div id="line" class="row"> 
+                <div class="col-3" >
+                </div>
+              </div>
+              <br>
+              <div class="row ">
+                <div class="col-5">
+                  <!-- <p>Tout initié a un maître.<span><br></span>Nous en avons deux. <span><br></span>
+                    <span>SYNERGIE</span> et <span>INNOVATION</span> nous commu- <span><br></span> niquent force et état d’esprit. <span> <br>
+                    <br></span>
+                    <span>INNOVATION</span> nous enseigne que le gibier<span> <br></span>
+                    ne se fait jamais prendre deux fois au même 
+                    endroit. Nous nous devons de nous renou-<span> <br></span>veler sans cesse, ouvrir des voies nouvelles, 
+                    surprendre en permanence.
+                  
+                  </p>  -->
+                  <p [innerHTML]="at.contenu1"></p>  
+                </div>  
+                <div class="col-7">
+                  <p [innerHTML]="at.contenu2"></p>
+                    <!-- <p> <span>SYNERGIE</span> nous enseigne que la solitude programme
+                        l’échec. Pour réussir nous devons à la fois travailler en 
+                        harmonie et travailler l’harmonie. Que ce soit entre collaborateurs, avec le partenaire, ou au sein de l’environnement, nous devons toujours trouver le moyen de 
+                        donner, d’échanger, de fusionner, pour profiter de l’effet de décuplement des énergies. <span><br></span>
+                        Des combinaisons de ces vertus sortent les offres les 
+                        plus prometteuses, les plus surprenantes, surtout celles 
+                        qui comptent et tiennent compte des réalités et des besoins du marché.
+                    </p> -->
+                </div>  
+
+
+                <div id="bonhome" class="col-6">
+                    <div><img [src]="bonhomme"  class="bonhome" alt=""></div>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+      <app-footer-shared></app-footer-shared>
+    </div>
+</body>  
+      
+   

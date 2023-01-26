@@ -1,0 +1,73 @@
+.bg_image{
+    width: 98,5vw;
+    height: 48vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+} 
+#carouselExampleDark{
+    margin-top: 15vw; 
+     margin-left: 5vw; 
+     margin-right: 5vw; 
+    background-size:contain;
+
+}
+.carousel-inner{
+    height: 45vw;
+}
+
+
+.mastheadDb{
+    width: 98,5vw;
+    height: 54vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+@media(max-width:768px){
+    .col-12 h1{
+        font-size: 7vw;
+        line-height:15vw
+        
+    }
+
+    .row p{
+        font-size: 3vw;
+    }
+    #line{
+        margin-left: 5vw;
+        margin-bottom: -5vw;
+        
+    }
+   
+}
+ 
+
+
+.col-12{
+    margin-left:4vw;
+
+}
+#line{
+    width: 27vw;
+    height: 1vw;
+    font-size: 1vw;
+    margin-top: -2vw;
+    margin-left: 1vw;
+    background-color: #f9b442;
+}
+h1{margin-top: 2vw;
+    text-transform: uppercase; 
+    font-size: 4vw;
+    line-height:1em; 
+    font-weight: bold; 
+}
+span{
+    font-weight: bold;
+}
+
+.bonhome{
+    width: 40vw;
+    height: 31vw;
+    margin-left: 20vw;
+    margin-top: 14vw;
+}

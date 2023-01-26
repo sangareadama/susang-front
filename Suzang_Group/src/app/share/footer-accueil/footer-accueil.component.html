@@ -1,0 +1,132 @@
+<div  class="footer">
+    <div class="container">
+      <br>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="row"> 
+            <div class="col-md-6">
+              <div class="row text-end"*ngFor="let ct of contacts">
+                <div class="row text-end"> 
+                  <div class="col-10">
+                    <h3 class="contacter"> Contacter</h3>
+                  </div>
+                  <div class="col-1"></div>
+                </div>
+                <br><br>
+                <div class="row text-end">
+                  <div class="col-10">
+                    <h2> ADRESSE</h2> 
+                   <p [innerHTML]="ct.adresse"></p>
+                    <!-- <h6>ADRESSE</h6> -->
+                    
+                    <!-- <p>Villa 69 Cité Belle Vue, Cocody
+                      Angré 8ieme Tranche</p> -->
+                  </div>
+                  <div class="col-1">
+                    <i class="bi bi-geo-alt"></i>
+                  </div> 
+                </div>
+                <div class="row text-end">
+                  <div class="col-10">
+                    <h2> TELEPHONE</h2> 
+                    <p [innerHTML]="ct.telephone"></p>
+                    <!-- <h6>TELEPHONE</h6>
+                    <p>Tel: (225)22421483 / (225)07 <br>
+                      77636140/ (225)0777636307</p> -->
+                    <!-- <p></p> -->
+                  </div>
+                  <div class="col-1">
+                    <!-- 77636140/(225)0777636307 -->
+                    <i class="bi bi-telephone-inbound"></i>
+                  </div>
+                </div>
+                <div class="row text-end">
+                  <div class="col-10">
+                    <h2> EMAIL</h2> 
+                    <p [innerHTML]="ct.email"></p>
+                    <!-- <h6>EMAIL </h6>
+                    <p id="emailFooter">info@suzang-group.com</p> -->
+                  </div>
+                  <div class="col-1">
+                    <i class="bi bi-envelope-paper"></i>
+                  </div>
+                </div>  
+                <div class="row text-end">
+                  <div class="col-10">
+                    <div id="icons" class="row justify-content-end">
+                        <div class="col-2">
+                          <i class="bi bi-facebook"></i>
+                        </div>
+                        <div class="col-2">
+                          <i class="bi bi-twitter"></i>
+                        </div>          
+                        <div class="col-2">
+                          <i class="bi bi-linkedin"></i>
+                        </div>
+                        <div class="col-2">
+                          <i class="bi bi-youtube"></i>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <br><br><br><br>
+              <div class="row newsletter">
+                <div *ngIf="message" class="modal-header">
+                    <span class="alert alert-info">{{message}}</span>
+                </div>
+                  <div class="d-grid gap-2 mx-auto text-center">
+                    <h2 id="newsletter"> Newsletter</h2>
+                        <form [formGroup]="newsletterForm" >
+                          <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Votre nom">
+                            <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-mail">
+                             
+                        </form>
+                        <button class="btn" id="btnSend" (click)="onSaveNewsletter()" routerLink="/accueil" type="button">Souscrire</button>
+                    <br>
+                  </div> 
+              </div>
+              <div  id="link" class="input-field s12"> 
+                <a  (click)="openNew()">desoucrir a la newsletter ?</a>
+                  
+             </div>
+            </div>
+            <!-- <div class="col-md-4">
+              <h3 class="contacter"> MAPS</h3>
+              <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100%','height':'320px'}" ></p-gmap>
+            </div> -->
+          </div>      
+        </div>
+      </div>
+    </div>
+
+    
+      <p-dialog [(visible)]="dialogDessoucrir" [style]="{width: '450px'}" header="Desoucrir a notre newsletter" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+
+          <form  [formGroup]="dessoucrirNewsForm"  >
+      
+            <div class="field">
+              <label for="libelle">Email</label>
+              <input type="text" pInputText id="username" [(ngModel)]="dessoucrirNews.username" formControlName="username" required autofocus />
+              <small class="p-error" *ngIf="submitted && !dessoucrirNews.username">Email is required.</small>
+            </div>  
+
+          </form>      
+        </ng-template>   
+        
+        <ng-template pTemplate="footer">
+          <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="onsendDessoucrirMail()" ></button> 
+        </ng-template>
+      
+        
+      </p-dialog>
+
+    <br><br>
+  
+  </div>

@@ -1,0 +1,84 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card">
+            <h5>Session Storage</h5>  
+            <p-table  #dt1 [value]="nosContacts" selectionMode="single" responsiveLayout="scroll" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" 
+            [(selection)]="noscontact" dataKey="id" styleClass="p-datatable-gridlines"  [paginator]="true" currentPageReportTemplate="Affichage de {last} sur {totalRecords} elements"
+            stateStorage="local" stateKey="statedemo-local" >
+                <ng-template pTemplate="caption">
+                    <div class="flex">  
+                        <!-- <button type="button" pButton pRipple icon="pi pi-file" (click)="dt1.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                        --> 
+                    </div>     
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr> 
+                        <th pSortableColumn="nom">Nom <p-sortIcon field="nom"></p-sortIcon></th>
+                        <th pSortableColumn="prenom">Prenom <p-sortIcon field="prenom"></p-sortIcon></th>
+                        <th pSortableColumn="contact">Contact <p-sortIcon field="contact"></p-sortIcon></th>
+                        <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                        <th pSortableColumn="commentaire">Message<p-sortIcon field="commentaire"></p-sortIcon></th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'nom', 'contains')" [value]="$any(dt1.filters['nom'])?.value"  placeholder="Filtrer par Nom" class="p-column-filter">
+                        </th>
+                        <th>
+                            <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'prenom', 'contains')" [value]="$any(dt1.filters['prenom'])?.value"  placeholder="Filtrer par prenom" class="p-column-filter">
+                        </th>
+                        <th>
+                            <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'contact', 'contains')" [value]="$any(dt1.filters['contact'])?.value"  placeholder="Filtrer par contact" class="p-column-filter">
+                        </th>
+                        <th>
+                            <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'email', 'contains')" [value]="$any(dt1.filters['email'])?.value" placeholder="Filtrer par email" class="p-column-filter">
+                        </th>
+                        
+                    </tr>
+                </ng-template>
+                
+                <ng-template pTemplate="body" let-nosContact>
+                    <tr [pSelectableRow]="nosContact">
+                        <td>
+                            <span class="p-column-title">Nom</span>
+                            {{nosContact.nom}}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Prenom</span>
+                            <span>{{nosContact.prenom}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Contact</span>
+                            <span >{{nosContact.contact}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Email </span>
+                            <span >{{nosContact.email}}</span>
+                        </td>
+                        <td>
+                            <button type="button" (click)="showDialog(nosContact)"  pButton icon="pi pi-external-link" label="View"><div *ngIf="!nosContact.vus" class="message-indicator"></div></button>
+                        </td>
+                    </tr>   
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="4">Aucun Nesletter trouvé.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+            <p-dialog header="Message" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [(visible)]="dialogVisible" [style]="{width: '75vw'}" [contentStyle]="{height: '300px'}">
+                <p class="sms" >{{nosContact.commentaire}}</p>
+                 
+                <ng-template pTemplate="footer">   
+                    <button type="button" pButton pRipple icon="pi pi-times" (click)="dialogVisible=false" label="Dismiss" class="p-button-text"></button>
+                </ng-template>
+            </p-dialog>
+        </div>
+      </div>
+    </div>
+</div>
+

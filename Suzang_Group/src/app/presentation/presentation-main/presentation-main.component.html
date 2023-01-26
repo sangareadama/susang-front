@@ -1,0 +1,126 @@
+<body class="bg_image" style="background-image:url(../../assets/images/PAGESITESUZANG-BG-05A.png)">
+
+  <div class="nav">
+    <!-- <app-navbar-shared></app-navbar-shared>
+     -->
+     <app-navbar-shared></app-navbar-shared>
+  </div>
+  
+
+  <div >  
+    <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="../../assets/images/RECADRAGE-111.jpg" id="carouselImage" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="../../assets/images/RECADRAGE-121.jpg" id="carouselImage" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" >
+            <img src="../../assets/images/RECADRAGE-101.jpg" id="carouselImage" class="d-block w-100" alt="...">
+          </div>
+        </div>
+    </div>  
+
+   
+     <!-- <div *ngFor="let Bloc of blocPresentations">
+      <div class="mastheadDb"  style="background-image:url({{this.presentationService.apiServerUrl+PageUrl+Bloc.id}})">
+        <div *ngFor="let ctn of Bloc.contenus">
+              
+           <div [ngStyle]="{'position':'absolute','margin-left':ctn.decalageGauche+'vw','margin-top':ctn.decalageHaut+'vw'}"> 
+          
+           
+            <div style="color: black;" [innerHTML]="ctn.libelle"></div>
+           </div>
+        </div>     
+      </div>   
+    </div> -->
+
+  
+    <div class="containtFirst" >
+        <div class="color-overly">
+          <div class="container">
+            <div class="col-12" *ngFor="let ps of presentations">
+              <div class="row under-nav">
+                <div class="col-xl-8 col-10"> 
+                  
+                    <!-- <h1 > Des chasseurs relâchés dans la villeee</h1>
+                    <br>   
+                    <br> -->
+                    <!-- <h1>{{ps.titre1}}</h1> -->
+                    <h1 [innerHTML]="ps.titre1"></h1>
+                </div>
+              </div>
+              <br>
+              <div  id="line" class="row"> 
+                <div class="col-3" >
+                </div>
+              </div>
+              <br>
+              <div class="row "> 
+                <div class="col-11">
+                  <!-- <p>Nous sommes <span>SUZANG GROUP</span>, nous sortons du bois sacré. Une armée de chasseurs initiés aux arts de la 
+                  guerilla urbaine. Nous chassons le consammateur, traquons ses attentes, reniflons ses besoins. Depuis 2014 nous pistons
+                  les tendances des marchés, pour accrocher le succès à votre tableau de chasse. <span><br></span>
+                  <span>"Si nous traquons le gibier c'est pour l'accrocher à votre tableau."</span>
+                  </p> -->
+                  <!-- <p>{{ps.contenu1}}</p>   -->
+                  <p [innerHTML]="ps.contenu1"></p>
+                </div>
+                <!-- <div class="container" >
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Add User
+                  </button>       
+              </div>   -->
+
+              
+                <div class="col-6" id="bonhome">
+                    <div><img [src]="bonhomme"  class="bonhome" alt=""></div>
+                </div>
+              </div>
+            </div>  
+          </div>
+          
+        </div>
+      </div>
+  <app-footer-shared></app-footer-shared>
+
+  </div>
+</body>  
+
+
+<!-- Modal 1
+<div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div *ngIf="message" class="modal-header">
+          <span class="alert alert-info">{{message}}</span>
+      </div>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Info</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+             <form [formGroup]="presentationForm"  (ngSubmit)="saveOrUpdatePresentation()">
+
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="presentation.titre1"  name="titre1"  id="titre1" formControlName="titre1" class="form-control">
+                <label for="titre1" placeholder="Entrer ici">Titre</label>
+             </div>  
+
+             <div class="form-floating mb-3">
+              <textarea type="text" [(ngModel)]="presentation.contenu1"  name="contenu1" id="contenu1" class="form-control" formControlName="contenu1"  style="height: 200px">  </textarea>
+              <label for="titre1" placeholder="Entrer Le text">Contenue</label>
+             </div>
+               
+           <button   id="btnSend" class="btn btn-primary" type="submit" >Enregistrer</button>
+            </form>  
+      </div>   
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"    data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+  

@@ -1,0 +1,132 @@
+.sb2-2-1 {
+    background: #fff;
+    padding: 25px;
+}
+.sb2-2-1 h2 {
+    margin-top: 0px;
+}
+
+.dash-book {
+    background: #e3e8ea;
+    padding: 30px 25px 35px 25px;
+    text-align: center;
+    margin: 2px;
+    position: relative;
+    overflow: hidden;
+}
+.dash-book i {
+    font-size: 72px;
+    color: #b4babd;
+}
+.dash-book h5 {
+    font-size: 28px;
+    color: #f9b442 ;
+    padding-bottom: 25px;
+}
+.dash-book h4 {
+    font-size: 74px;
+    margin-bottom: 40px;
+    margin-top: 8px;
+}
+.dash-book a {
+    border: 1px solid #021f40;
+    padding: 5px 10px;
+    color: #ffffff;
+    border-radius: 2px;
+    background: #002147;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 26px;
+}
+.dash-book a:hover {
+    color: #fff;
+    background: #0e76a8;
+    border: 1px solid #0d638c;
+}
+.dash-book a:focus {
+    color: #fff;
+}
+.dash-b-1 h4 {
+    color: #00BCD4;
+}
+.dash-b-2 h4 {
+    color: #00d4ca;
+}
+.dash-b-3 h4 { 
+    color: #00d499;
+}
+.dash-b-4 h4 {
+    color: #FFC107;
+}
+
+.db-2 {
+    /* background: #e3e8ea; */
+    /* padding: 25px; */
+    
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.db-2 h3 {} .db-2 p {} .db-2 ul {
+    margin-bottom: 0px;
+    padding: 0px;
+}
+.db-2 ul li {
+    width: 25%;
+    float: left;
+    list-style-type: none;
+}
+
+body{margin-top:20px;
+    background:#eee;
+    }	
+#page-wrapper {
+        padding: 15px 25px;
+    } 
+    
+.col-lg-3{
+    background-color: red;
+    margin: 1em;
+}
+
+
+.card{
+	
+	border-top-left-radius: 3em;
+	border-bottom-right-radius: 3em;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+
+  .db-icon{
+    font-size: 3em;
+    color:#f9b442;
+    padding: 0.2em;
+    border-radius:0.2em;
+    background-color:#64350d ;
+  }
+  .db-info h1{
+     color: #64350d;
+     font-size: 3em;
+  }
+
+  #lineChart{
+    margin-left:-7vw;
+  } 
+
+  
+@media(max-width:500px){
+   
+    #lineChart{
+       
+        margin-left:-30vw;
+      } 
+}
+
+
+  
+  

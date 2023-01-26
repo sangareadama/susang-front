@@ -1,0 +1,86 @@
+.footer{
+    background-color: black;
+    margin-top: 15vw;
+}
+
+.contacter{
+    color:#f9b442;
+    font-size: 3em;
+}
+.text-end p,h2,h6{
+    color: white;
+}
+.text-end i{
+    color: #f9b442;
+    font-size: 1.5em;
+}
+#newsletter{
+    text-transform: capitalize;
+}
+.newsletter{
+    background-color: #64350d;
+    height: 40vw;
+    width: 30vw;
+    margin-top:-2vw ;
+}
+.reference{
+    margin-bottom: 3vw;
+}
+
+#btnSend{
+    /* height: 6vh;
+    width: 25vw;
+     */
+    /* font-size:1.8vw; */
+   
+    background: rgb(21, 21, 21);
+    background: -webkit-linear-gradient(to top, #f9b442, #f9b442);
+    background: linear-gradient(to top, #f9b442, #f9b442);
+    color: white;
+    border: 1px solid rgb(72, 72, 72);
+}
+
+
+#btnSend:hover{
+    border: 1px solid black;
+    background:rgb(72, 72, 72);
+    color:white;
+}
+#email{
+    height: 1.8em;
+    font-size:1.8vw;
+    text-align: center;
+    border-radius:0em;
+}
+
+#nav ul.active{
+    color: #e66030;
+}
+
+#emailFooter{
+    margin-left: 2.5vw;
+}
+#icons{
+  margin-right: 0.5vw;
+}
+
+#newsletter{
+    font-size: 2.5em;
+    color: #f9b442;
+}
+
+.col-5{
+    margin-top: 7em;
+}
+
+.full{
+    height: 100vh;
+    width:  100vw;
+}
+  
+.p-fluid{
+    background-color: white;
+    border-radius: 1em;
+    padding: 2em;
+    
+}

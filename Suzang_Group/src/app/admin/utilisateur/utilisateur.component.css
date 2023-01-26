@@ -1,0 +1,57 @@
+.modal-header,.modal-footer{
+    background-color: white;
+}
+.full-width{
+    color: gray;
+}
+
+.img-fluid{
+
+    width: 7em;
+    height: 7em;
+}
+
+.modal-body{
+    background-color: #381e06;
+}
+
+#btnSend{
+    height: 7vh;
+    width: 100%;
+    font-size:1.5vw;
+    margin-top: 1vw;
+    border-radius:0.3em; 
+    background: rgb(21, 21, 21);
+    background: -webkit-linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    background: linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    color: white;
+    border: 1px solid rgb(72, 72, 72);
+}
+
+
+#btnSend:hover{
+    border: 1px solid black;
+    background:white;
+    color:#333;
+}
+
+
+.float-left{
+    margin-left: 5em;
+}
+
+mat-grid-tile{
+    border: 2px dashed white;
+}
+.btn-remove-image{
+    position: absolute;
+    cursor: pointer;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: auto;
+    text-align: center;
+}

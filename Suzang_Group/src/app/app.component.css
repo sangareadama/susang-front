@@ -1,0 +1,18 @@
+.spinner-border{
+   margin-top: 20em;
+   margin-left: 45em;
+   background-color: #64350d; 
+}
+
+button {
+   min-width: 10rem;
+   margin-right: .5rem;
+}
+  
+@media screen and (max-width: 960px) {
+   button {
+       width: 100%;
+       margin-bottom: .5rem;
+   }
+}
+ 

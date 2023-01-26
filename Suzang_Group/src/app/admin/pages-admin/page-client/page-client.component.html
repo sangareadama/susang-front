@@ -1,0 +1,157 @@
+
+<div class="row">
+  <div class="card col-md-10">
+    <p-table [value]="clients" responsiveLayout="scroll">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button pButton pRipple label="Voir page" icon="pi pi-visible" class="p-button-outlined p-button-warning" routerLink="/clients" ></button>
+           
+        </div>
+      </ng-template>
+      <ng-template   pTemplate="header">
+        <tr >
+          <th style="width:30%" pSortableColumn="titre">Titre <p-sortIcon field="price"></p-sortIcon></th>
+          <th style="width:45%" pSortableColumn="contenu" style="min-width:10rem;">Contenus Gauche<p-sortIcon field="contenu"></p-sortIcon></th>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-cl >
+        <tr>
+          <td ><div class="box" [innerHTML]="cl.titre1"></div></td>    
+          <td ><div class="box" [innerHTML]="cl.contenu1"> </div></td>
+          <td ></td>
+          <td  >
+            <button pButton pRipple icon="pi pi-pencil" (click)="UpdatePageAccueilDialog = true " (click)="onLoadClient(cl)"  class="p-button-rounded p-button-success" ></button>   
+          </td>
+          <td >
+            <button type="button"    pButton icon="pi pi-external-link" (click)="visibiliteDialogue=true"  (click)="onLoadClient(cl)" label="View"></button>
+          </td>
+        </tr>
+        
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+
+ <!-- modale de modification -->
+ <p-dialog [(visible)]="UpdatePageAccueilDialog" [style]="{width: '800px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="clientFormUpdate"  >  
+        <div class="col-12">
+          <div class="field">
+            <label style="font-size:2em;" for="titre">Titre </label>
+            <p-editor  [(ngModel)]="pageClient.titre1" formControlName="titre1" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !pageClient.titre1">titre is required.</small>
+          </div> 
+  
+          <div class="field">
+            <label style="font-size:2em;" for="titre">contenu </label>
+            <p-editor  [(ngModel)]="pageClient.contenu1" formControlName="contenu1" formControlName="contenu1" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !pageClient.contenu1">titre is required.</small>
+          </div>
+           
+        </div>      
+    </form>         
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-warning" (click)="UpdatePageAccueilDialog=false" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-outlined" (click)="onUpdateClientPage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog header="Voir plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [(visible)]="visibiliteDialogue" [style]="{width: '70vw'}" [contentStyle]="{height: '400px'}">
+
+  <div class="row"> 
+    <div class="col-12">
+      <div class="field col-12 md:col-6">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="pageClient.titre1"></div>  
+        </p-panel>
+      </div>
+      <br>
+      <div class="field col-12 md:col-6">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+         <p [innerHTML]="pageClient.contenu1"></p> 
+        </p-panel>
+      </div>    
+    </div>   
+  </div> 
+   
+  <ng-template pTemplate="footer">   
+      <button type="button" pButton pRipple icon="pi pi-times" (click)="visibiliteDialogue=false" label="Dismiss" class="p-button-text"></button>
+  </ng-template>
+</p-dialog>
+
+
+<!-- 
+<div class="containtFirst" >   
+  <div class="color-overly">
+    <div class="container">
+      <div class="col-md-8" *ngFor="let cl of clients">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <p  [innerHTML]="cl.titre1"></p>
+        </p-panel>
+        <br>    
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+            <p [innerHTML]="cl.contenu1"></p>
+        </p-panel>
+        <br><br>
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="onLoadClient(cl)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Update Info 
+          </button>
+          <a  id="returnToPage" class="btn btn-warning tooltips" type="button" routerLink="/clients" ><i class="fa fa-view"></i> Voir la page</a>
+        </div>
+        <div class="col">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Modal 1 -->
+<!-- <div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-lg  modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div *ngIf="message" class="modal-header">
+          <span class="alert alert-info">{{message}}</span>
+      </div>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Info</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+             <form [formGroup]="clientForm"  (ngSubmit)="saveOrUpdateClient()">
+              
+                  <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Titre" [toggleable]="true">
+                    <div class="form-floating mb-3">
+                        <!-- <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="client.titre1" formControlName="titre1"  ></angular-editor> 
+                    </div>  
+                  </p-fieldset>
+                  <br> 
+                  <p-fieldset  [transitionOptions]="'500ms'" legend="Contenu" [toggleable]="true">
+                    <div class="form-floating mb-3">
+                      <!-- <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="client.contenu1" formControlName="contenu1"  ></angular-editor> 
+                    </div>
+                  </p-fieldset>
+                  <br>
+                 
+                  
+            </form>  
+      </div>    
+      <div class="modal-footer">
+        
+          <button   id="btnSend" class="btn btn-primary" (click)="saveOrUpdateClient()" type="submit" >Enregistrer</button>
+        
+        <button type="button" class="btn btn-secondary"    data-bs-dismiss="modal">Close</button>  
+      </div>
+    </div>
+  </div> 
+</div>
+
+
+   -->

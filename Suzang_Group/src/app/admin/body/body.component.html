@@ -1,0 +1,5 @@
+<div class="body" [ngClass]="getBodyClass()">
+    <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+    <app-statistics *ngIf="activePage=='/admin'"></app-statistics>
+    <router-outlet ></router-outlet>
+</div>

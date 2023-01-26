@@ -1,0 +1,222 @@
+<body>
+    <div class="row">
+      <app-navbar-shared></app-navbar-shared>
+    </div>
+    <div class="footer">
+        <div class="container">
+          <br>
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row text-end"*ngFor="let ct of contacts">
+                    <div class="row text-end"> 
+                      <div class="col-10">
+                        <h3 class="contacter"> Contacter</h3>
+                      </div>
+                      <div class="col-1"></div>
+                    </div>
+                    <br><br>
+                    <div class="row text-end">
+                      <div class="col-10">
+                        <h2> ADRESSE</h2> 
+                       <p [innerHTML]="ct.adresse"></p>
+                        <!-- <h6>ADRESSE</h6> -->
+                        
+                        <!-- <p>Villa 69 Cité Belle Vue, Cocody
+                          Angré 8ieme Tranche</p> -->
+                      </div>
+                      <div class="col-1">
+                        <i class="bi bi-geo-alt"></i>
+                      </div> 
+                    </div>
+                    <div class="row text-end">
+                      <div class="col-10">
+                        <h2> TELEPHONE</h2> 
+                        <p [innerHTML]="ct.telephone"></p>
+                        <!-- <h6>TELEPHONE</h6>
+                        <p>Tel: (225)22421483 / (225)07 <br>
+                          77636140/ (225)0777636307</p> -->
+                        <!-- <p></p> -->
+                      </div>
+                      <div class="col-1">
+                        <!-- 77636140/(225)0777636307 -->
+                        <i class="bi bi-telephone-inbound"></i>
+                      </div>
+                    </div>
+                    <div class="row text-end">
+                      <div class="col-10">
+                        <h2> EMAIL</h2> 
+                        <p [innerHTML]="ct.email"></p>
+                        <!-- <h6>EMAIL </h6>
+                        <p id="emailFooter">info@suzang-group.com</p> -->
+                      </div>
+                      <div class="col-1">
+                        <i class="bi bi-envelope-paper"></i>
+                      </div>
+                    </div>  
+                    <div class="row text-end">
+                      <div class="col-10">
+                        <div id="icons" class="row justify-content-end">
+                            <div class="col-2">
+                              <i class="bi bi-facebook"></i>
+                            </div>
+                            <div class="col-2">
+                              <i class="bi bi-twitter"></i>
+                            </div>          
+                            <div class="col-2">
+                              <i class="bi bi-linkedin"></i>
+                            </div>
+                            <div class="col-2">
+                              <i class="bi bi-youtube"></i>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <br><br>
+                  <!-- <div class="row newsletter"> 
+                      <div class="d-grid gap-2 mx-auto text-center">
+                        <h2 id="newsletter"> NOUS CONTACTER</h2>
+                        <form [formGroup]="sendEmailModelform"  (ngSubmit)="saveOrUpdateContact()">
+                          <div class="form-floating mb-3">
+                              <input type="text" [(ngModel)]="sendEmailModel.nom"  name="nom" formControlName="nom" class="form-control" id="floatingInput" placeholder="nom">
+                              <label for="floatingInput">Votre Nom</label>
+                          </div>
+                          <div class="form-floating mb-3">
+                            <input type="text"   [(ngModel)]="sendEmailModel.prenom"  name="prenom" formControlName="prenom" class="form-control" id="floatingInput" placeholder="prenom">
+                            <label for="floatingInput">Votre Prenom</label>
+                          </div>
+                          <div class="form-floating mb-3">
+                            <input type="text"  [(ngModel)]="sendEmailModel.contact"  name="contact" formControlName="contact" class="form-control" id="floatingInput" placeholder="tel">
+                            <label for="floatingInput">Votre Contact</label>
+                         </div>
+                          <div class="form-floating mb-3">
+                              <input type="email"  [(ngModel)]="sendEmailModel.email"  name="email" formControlName="email" class="form-control" id="floatingInput" placeholder="email">
+                              <label for="floatingInput">Email address</label>
+                          </div>
+                          <div class="form-floating">
+           
+                            <textarea class="form-control"  placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"    [(ngModel)]="sendEmailModel.commentaire"  name="commentaire" formControlName="commentaire" ></textarea>
+                             
+                          </div> 
+                          <button class="btn" id="btnSend" class="btn btn-primary" type="submit" (click)="onSendEmail()"  type="button" (click)="initContactForm()">ENVOYER</button>
+                          <br>
+                        </form>   
+                        </div> 
+                             
+                  </div> -->
+   
+                  <div class="row text-end"> 
+                    <div class="col-10">
+                      <div class="row justify-content-center">
+                        <h2 id="newsletter"> Nous Contacter</h2>
+                      </div>
+                    </div>
+                  </div>  
+                  
+                  <div class="p-fluid p-grid">
+         
+                    <form  [formGroup]="sendEmailModelform"  >
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="field col-12 md:col-4">
+                            <span class="p-float-label">
+                              <input  type="text"id="nom" pInputText [(ngModel)]="sendEmailModel.nom" formControlName="nom" required autofocus  />
+                              <label for="inputtext">Nom</label>
+                              <small class="p-error" *ngIf="submitted && !sendEmailModel.nom">Nom requit.</small>
+                            </span>
+                          </div>    
+                        </div>
+                        <div class="col-6">
+                          <div class="field col-12 md:col-4">
+                            <span class="p-float-label">
+                              <input  required autofocus type="text" id="prenom" name="prenom" formControlName="prenom" pInputText [(ngModel)]="sendEmailModel.prenom" />
+                              <label for="inputtext">Prenoms</label>
+                              <small class="p-error" *ngIf="submitted && !sendEmailModel.prenom">Prenom requit</small>
+                            </span>
+                          </div>
+                        </div>  
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="field col-12 md:col-4">
+                            <span class="p-float-label">
+                              <input required autofocus type="text"id="contact" pInputText [(ngModel)]="sendEmailModel.contact" formControlName="contact" required autofocus  />
+                              <label for="inputtext">Contact</label>
+                              <small class="p-error" *ngIf="submitted && !sendEmailModel.contact">Contact requit.</small>
+                            </span>
+                          </div>    
+                        </div>
+                        <div class="col-6">
+                          <div class="field col-12 md:col-4">
+                            <span class="p-float-label">
+                              <input required autofocus type="text" type="email" pInputText [(ngModel)]="sendEmailModel.email"  name="email" formControlName="email" />
+                              <label for="inputtext">Email</label>
+                              <small class="p-error" *ngIf="submitted && !sendEmailModel.email">Email requit</small>
+                            </span>
+                          </div>
+                        </div> 
+                       
+                      </div> 
+                      <br>
+                      <div class="row">
+
+                        <div class="col-12">
+                          <div class="field col-12 md:col-4">
+                            <span class="p-float-label">
+                              <input required autofocus type="text" type="objet" pInputText [(ngModel)]="sendEmailModel.objet"  name="objet" formControlName="objet" />
+                              <label for="inputtext">Objet</label>
+                              <small class="p-error" *ngIf="submitted && !sendEmailModel.objet">Objet requit</small>
+                            </span>
+                          </div>
+                        </div>
+
+                      </div>
+                       <br>
+                       <div class="row">
+                        <div class="col-12">
+                          <div class="field col-12 md:col-4">
+                            <span class="p-float-label p-input-icon-left">
+                              <i class="pi pi-edit"></i>
+                              <textarea required autofocus inputId="textarea" rows="5" style="resize: none;" cols="30" [(ngModel)]="sendEmailModel.commentaire"  name="commentaire" formControlName="commentaire" pInputTextarea></textarea>
+                              <label for="textarea">Commentaire</label>
+                              <small class="p-error" *ngIf="submitted && !sendEmailModel.commentaire">Un commentaire est requit.</small>
+                            </span>
+                          </div>
+                        </div>
+                       </div>                      
+                    </form>      
+                    
+                    <div class="row justify-content-center">
+                      <button class="btn" id="btnSend" class="btn btn-primary" type="submit" (click)="onSendEmail()"  type="button" >ENVOYER</button>
+
+                     </div>
+                  </div>
+                  
+                </div>
+                  <!-- <div class="col-4">
+
+                <goole-map height="200px"
+                            width="300px"
+                            [center]="center"
+                            [zoom]="zoom" 
+                          >   
+                  </goole-map> 
+                  <div>Latitude :{{display?.lat}}</div>
+                  <div>Longitude :{{display?.lng}}</div> 
+
+                </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+      </div>
+</body>
+

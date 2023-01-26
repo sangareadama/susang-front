@@ -1,0 +1,294 @@
+<div class="row">
+  <div class="card col-md-10">
+    <p-table [value]="servicePages" responsiveLayout="scroll">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button pButton pRipple label="Voir page" icon="pi pi-visible" class="p-button-outlined p-button-warning" routerLink="/services" ></button>
+           
+        </div>
+      </ng-template>
+      <ng-template   pTemplate="header">
+        <tr >     
+          <th style="width:30%" pSortableColumn="titre">Titre <p-sortIcon field="price"></p-sortIcon></th>
+          <th style="width:45%" pSortableColumn="contenu" style="min-width:10rem;">Contenus Gauche<p-sortIcon field="contenu"></p-sortIcon></th>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sp >
+        <tr>
+          <td ><div class="box" [innerHTML]="sp.titre1"></div></td>    
+          <td ><div class="box" [innerHTML]="sp.contenu1"> </div></td>
+          <td ></td>
+          <td  >
+            <button pButton pRipple icon="pi pi-pencil" (click)="UpdatePageServiceDialog = true " (click)="onLoadServicePage(sp)"  class="p-button-rounded p-button-success" ></button>   
+          </td>
+          <td >
+            <button type="button"    pButton icon="pi pi-external-link" (click)="visibiliteDialogue=true"  (click)="onLoadServicePage(sp)" label="View"></button>
+          </td>
+        </tr>
+        
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+
+ <!-- modale de modification -->
+ <p-dialog [(visible)]="UpdatePageServiceDialog" [style]="{width: '800px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="servicesItemForm"  >  
+        <div class="col-12">
+          <div class="field">
+            <label style="font-size:2em;" for="titre">Titre </label>
+            <p-editor  [(ngModel)]="servicePage.titre1" formControlName="titre1" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !servicesItem.titre1">titre is required.</small>
+          </div> 
+  
+          <div class="field">
+            <label style="font-size:2em;" for="titre">contenu </label>
+            <p-editor  [(ngModel)]="servicePage.contenu1" formControlName="contenu1" formControlName="contenu1" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !servicesItem.contenu1">titre is required.</small>
+          </div>
+           
+        </div>      
+    </form>         
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-warning" (click)="UpdatePageServiceDialog=false" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-outlined" (click)="onUpdateServicePage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog header="Voir plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [(visible)]="visibiliteDialogue" [style]="{width: '60vw'}" [contentStyle]="{height: '400px'}">
+
+  <div class="row"> 
+    <div class="col-12">
+      <div class="field col-12 md:col-6">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="servicePage.titre1"></div>  
+        </p-panel>
+      </div>
+      <br>
+      <div class="field col-12 md:col-6">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+         <p [innerHTML]="servicePage.contenu1"></p> 
+        </p-panel>
+      </div>    
+    </div>   
+  </div> 
+   
+  <ng-template pTemplate="footer">   
+      <button type="button" pButton pRipple icon="pi pi-times" (click)="visibiliteDialogue=false" label="Dismiss" class="p-button-text"></button>
+  </ng-template>
+</p-dialog>
+
+
+
+
+
+<!-- <div class="containtFirst" >   
+  <div class="color-overly">
+    <div class="container">
+      <div class="col-md-8" *ngFor="let sp of servicePages">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <p  [innerHTML]="sp.titre1"></p>
+        </p-panel>
+        <br>    
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+            <p [innerHTML]="sp.contenu1"></p>
+        </p-panel>
+        <br><br>
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="onLoadServicePage(sp)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Update Info 
+          </button>
+          <a  id="returnToPage" class="btn btn-warning tooltips" type="button" routerLink="/services" ><i class="fa fa-view"></i> Voir la page</a>
+        </div>
+        <div class="col">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- 
+<div class="containtFirst" >
+    <div class="color-overly">
+      <div class="container">
+        <div class="col-12" *ngFor="let sp of servicePages">
+          <div class="row under-nav">
+            <div class="col-6"> 
+                <!-- <h1 > Des chasseurs relâchés dans la villeee</h1>
+                <br>
+                <br> 
+                 <h3>Titre :</h3> 
+                <h1>{{sp.titre1}}</h1>
+            </div> 
+          </div>
+          <br>
+          <div class="row"> 
+            <div class="col-3" id="line">
+            </div>
+          </div> 
+          <br>
+          <div class="row ">
+            <div class="col-6">
+              <!-- <p>Nous sommes <span>SUZANG GROUP</span>, nous sortons du bois sacré. Une armée de chasseurs initiés aux arts de la 
+              guerilla urbaine. Nous chassons le consammateur, traquons ses attentes, reniflons ses besoins. Depuis 2014 nous pistons
+              les tendances des marchés, pour accrocher le succès à votre tableau de chasse. <span><br></span>
+              <span>"Si nous traquons le gibier c'est pour l'accrocher à votre tableau."</span>
+              </p> 
+
+              <br>
+              <h3>Contenu :</h3> 
+              <p>{{sp.contenu1}}</p>  
+            </div>
+             <div class="container" >
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add User
+              </button>       
+           </div> 
+
+           <div class="row">
+
+            <div class="col-md-4" >
+              <button type="button" class="btn btn-primary" (click)="onLoadServicePage(sp)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Update Info 
+            </button>       
+              
+              </div> 
+              <div class="col-md-4">
+                <a  class="btn btn-warning tooltips" type="button" routerLink="/services" data-original-title="Delete"><i class="fa fa-view"></i> Voir la page</a>
+              </div>
+           </div> 
+      </div>
+    
+  </div>
+</div>  -->
+
+
+<div class="card col-md-2">
+  <p-table [value]="servicesItems" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button pButton pRipple label="Ajouter Service" icon="pi pi-visible" (click)="initForm()" data-bs-toggle="modal" data-bs-target="#addOrUpdateSercicesItem" class="p-button-outlined p-button-info" ></button>
+         
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<div class="row">
+  <div class="col-xl-4 col-sm-12 col-md-6" *ngFor="let si of servicesItems">
+
+    <mat-card class="example-card" >
+      <mat-card-title-group>
+        <mat-card-title class="align-self-center">
+          <button mat-button id="btnTile" ><p [innerHTML]="si.titre1"></p></button>
+          
+          <!-- <button class="btn" class="btn btn-primary" id="btnSend" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">{{si.titre1}}</button> -->
+          
+        </mat-card-title>
+        
+      </mat-card-title-group>
+      <mat-card-content class="box">
+          
+        <p [innerHTML]="si.contenu1"></p>
+      </mat-card-content>
+      <mat-card-actions>
+          <div class="float-left btn-group btn-group-sm">
+              <a  class="btn btn-warning tooltips"  (click)="onLoadServicesItem(si)" id="btnUpdateItem" data-placement="top" type="button" data-bs-target="#addOrUpdateSercicesItem" data-bs-toggle="modal"  data-original-title="Delete"><i class="fa fa-edit"></i></a>
+          </div>
+      </mat-card-actions>
+   </mat-card>
+
+    <!-- <div class="box">
+      <button class="btn " id="btnSend" type="button" data-bs-toggle="modal" (click)="onLoadServicesItem(si)"  data-bs-target="#exampleModal"[innerHTML]="si.titre1"> </button>
+     <p  [innerHTML]="si.contenu1"></p>
+    </div> -->
+  </div>
+</div>
+
+<!-- 
+
+<div class="container-fluid">
+    <div class="container button" > 
+        <button type="button"   id="btnService" class="btn btn-primary" (click)="initForm()" data-bs-toggle="modal" data-bs-target="#addOrUpdateSercicesItem">
+            Add Service
+        </button>       
+     </div>
+     <div class="container">
+        <div class="col-12">
+
+            <div class="row">
+                <div class="col-md-4" *ngFor="let si of servicesItems">
+                    <mat-card class="example-card" >
+                        <mat-card-title-group>
+                          <mat-card-title class="align-self-center">
+                            <button mat-button id="btnTile" ><p [innerHTML]="si.titre1"></p></button>
+                            
+                            <!-- <button class="btn" class="btn btn-primary" id="btnSend" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">{{si.titre1}}</button> 
+                            
+                          </mat-card-title>
+                          
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            
+                          <p [innerHTML]="si.contenu1"></p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <div class="float-left btn-group btn-group-sm">
+                                <a  class="btn btn-warning tooltips"  (click)="onLoadServicesItem(si)" id="btnUpdateItem" data-placement="top" type="button" data-bs-target="#addOrUpdateSercicesItem" data-bs-toggle="modal"  data-original-title="Delete"><i class="fa fa-edit"></i></a>
+                            </div>
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+
+ -->
+
+    
+<!-- Modal 1 -->
+<div class="modal fade" id="addOrUpdateSercicesItem"  aria-labelledby="addOrUpdateSercicesItem">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div *ngIf="message" class="modal-header">
+            <span class="alert alert-info">{{message}}</span>
+        </div>
+          <h1 class="modal-title fs-5" id="addOrUpdateSercicesItem">Update Service</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="initForm()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+               <form [formGroup]="servicesItemForm"  (ngSubmit)="saveOrUpdateServicesItem()">
+
+                <div class="col-12">
+                  <div class="field">
+                    <label style="font-size:2em;" for="titre">Titre </label>
+                    <p-editor  [(ngModel)]="servicesItem.titre1" formControlName="titre1" ></p-editor>
+                    <small class="p-error" *ngIf="submitted && !servicesItem.titre1">titre is required.</small>
+                  </div> 
+          
+                  <div class="field">
+                    <label style="font-size:2em;" for="titre">contenu </label>
+                    <p-editor  [(ngModel)]="servicesItem.contenu1" formControlName="contenu1" formControlName="contenu1" ></p-editor>
+                    <small class="p-error" *ngIf="submitted && !servicesItem.contenu1">titre is required.</small>
+                  </div>
+                   
+                </div>  
+                  
+               
+              </form>  
+        </div>    
+        <div class="modal-footer">
+          <button   id="btnSend" class="btn btn-primary" (click)="saveOrUpdateServicesItem()" type="submit" >Enregistrer</button>
+          <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div> 
+  </div>

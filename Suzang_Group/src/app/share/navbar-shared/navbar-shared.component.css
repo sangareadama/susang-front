@@ -1,0 +1,90 @@
+
+#navbarSupportedContent{
+    /* margin-top: 2vw; */
+}
+#logo{
+    width: 15vw;
+    margin-top:-2vw;
+}
+   
+
+
+@media(max-width:768px){
+   #logo{
+       width: 25vw;
+   }
+   nav{     
+       margin-top: -2.5em;    
+   } 
+   
+}
+
+
+.menuPlus{
+    font-size: 3vw;
+    color: black;
+    font-weight: bold;
+    margin-left: 1.5vw;
+
+}
+li{
+    padding-left: 0.3vw;
+    font-size: 2vw;
+}
+.container-fluid{
+    margin-left: 1vw;
+}
+#navbarSupportedContent a{ 
+   color: black;
+}
+
+nav{
+    position:absolute;
+    top: 2em;
+    z-index: 1;
+}
+a:hover{
+    text-decoration: underline #f9b442 0.3rem;
+    
+    transition: 0.5s ease-in;
+}
+li .active{
+    text-decoration: underline #f9b442 0.3rem;
+    transition: 0.5s ease-in;
+}
+
+#log{
+    font-size: 3vw;
+    color:black;
+    font-weight: bold;
+    margin-left: 1.5vw;
+}
+
+.overlay{
+    background: #fff;
+    margin-top: 10px;
+    box-shadow:0 1rem 3rem rgb(0 0 0 / 13%) ;
+    border-radius: 0.25rem;
+} 
+
+.overlay-user ul{
+    padding: 0.5rem 0; 
+    list-style: none;
+    width: 10rem;
+}
+.overlay-user li{
+    margin-top: 1vw;
+    font-size: 17px;
+    font-weight: 400;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: #495057;
+    cursor: pointer;    
+}
+.overlay-user .icon{
+    margin-right: 0.6rem;
+}
+.overlay-user li:hover{
+    background: #f9b442;
+}
+

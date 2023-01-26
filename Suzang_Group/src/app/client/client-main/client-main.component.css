@@ -1,0 +1,68 @@
+.bg_image{
+    width: 98,5vw;
+    height: 48vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+} 
+#carouselExampleDark{
+    margin-top: 15vw; 
+     margin-left: 5vw; 
+     margin-right: 5vw; 
+    background-size:contain;
+}
+
+.col-12{
+    margin-left:4vw;
+
+}
+
+.carousel-inner{
+    height: 45vw;
+}
+
+@media(max-width:768px){
+    .col-12 h1{
+        font-size: 8vw;
+        line-height:7vw
+        
+    }
+
+    .row p{
+        font-size: 3vw;
+    }
+
+
+    #line{
+        margin-left: 5vw;
+        margin-bottom: -3vw;
+        
+    }
+   
+}
+#line{
+    width: 27vw;
+    height: 1vw;
+    font-size: 1vw;
+    margin-top: -2vw;
+    margin-left: 1vw;
+    background-color: #f9b442;
+}
+h1{margin-top: 2vw;
+    text-transform: uppercase; 
+    font-size: 4vw;
+    line-height:4vw; 
+    font-weight: bold; 
+}
+span{
+    font-weight: bold;
+}
+p{
+    font-size: 1.7vw;
+    
+}
+.bonhome{
+    width: 40vw;
+    height: 32vw;
+    margin-left: 20vw;
+    margin-top: 20vw;
+}

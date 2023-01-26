@@ -1,0 +1,30 @@
+.sms{
+    font-size: 2em;
+    margin-top: 2em;
+    text-align: justify;
+    
+}
+
+.message-indicator{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    top: -2px;
+    right: -3px; 
+    background-color: red;
+
+}
+
+:host::ng-deep .panelStyle.ng-template .ng-template-pTemplate{
+    /* background-color: #f9b442; */
+    border-color:#f9b442;
+    height: 1em;
+    
+  } 
+  :host::ng-deep .panelStyle.p-table .ng-template-title{
+    color: #f9b442;
+  } 
+  :host::ng-deep .panelStyle.p-table .ng-template-content{
+    border-color:#f9b442;
+
+  } 

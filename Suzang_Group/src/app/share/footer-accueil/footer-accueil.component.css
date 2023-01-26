@@ -1,0 +1,69 @@
+.footer{
+    background-color: black;
+}
+.contacter{
+    color:#f9b442;
+    font-size: 3em;
+} 
+.text-end p,h2,h6{
+    color: white;
+}
+.text-end i{
+    color: #f9b442;
+    font-size: 1.5em;
+}
+#newsletter{
+    text-transform: capitalize;
+}
+.newsletter{
+    background-color: #64350d;
+   
+}
+.reference{
+    margin-bottom: 3em;
+    font-size: 4em;
+}
+
+#btnSend{
+    /* height: 1.8em; */
+    /* font-size:1.8em; */
+    margin-bottom: 5em;
+    border-radius:0em;
+    background: rgb(21, 21, 21);
+    background: -webkit-linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    background: linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    color: white;
+    border: 1px solid rgb(72, 72, 72);
+}
+
+
+#btnSend:hover{
+    border: 1px solid black;
+    background:white;
+    color:#333;
+}
+#email{
+    height: 1.8em;
+   
+    text-align: center;
+    border-radius:0em;
+}
+#nom{ 
+    height: 1.8em;
+    
+    text-align: center;
+    border-radius:0em;
+    margin-bottom:1em ;
+}
+ 
+
+#nav ul.active{
+    color: #e66030;
+} 
+
+#emailFooter{
+    margin-left: 2.5em;
+}
+#icons{
+  margin-right: 0.5em;
+}

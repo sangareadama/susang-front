@@ -1,0 +1,43 @@
+.bootstrap-wrapper{
+  margin-top: 5em;
+}
+
+mat-card{
+  background-color: #381e06;
+  border-radius: 2em;
+}
+    
+  #btnSend{
+    height: 10vh;
+    width: 100%;
+    font-size:2vw;
+    margin-top: 1vw;
+    border-radius:0.5em; 
+    background: rgb(21, 21, 21);
+    background: -webkit-linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    background: linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    color: white;
+    border: 2px solid #381e06;
+}
+
+
+#btnSend:hover{
+    border: 2px solid #f9b442;
+    background:white;
+    color:#333;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+h1{
+  color: white;
+}
+
+form,.retour{
+  text-align: center;
+}
+
+#link{
+  margin-top: 1em;
+}

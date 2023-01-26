@@ -1,0 +1,472 @@
+.bg_image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+     position: relative;
+     
+} 
+.bg_image1{
+    height: 120%;
+    width: 100%;
+    object-fit:fill;
+    position: relative;
+    background-size:cover;
+
+}
+.bg_image2{
+    width: 20em;
+    height: 10em;
+    position: absolute;
+    bottom: 1;
+    background-size:cover;
+    background-repeat: no-repeat;
+} 
+#text{
+    color: white; 
+    position: absolute;
+    top: 70em;
+
+}
+#menu{
+ margin-left: 2em;
+ font-size: 1.5em;
+}
+li{
+    padding-left: 1vw;
+    font-size: 2vw;
+}
+nav{
+    position:absolute;
+    top: 2em;
+    z-index: 1;
+}
+#head{
+    background-size: cover;
+    position:absolute;
+    color: #f9b442;
+    font-weight: bold; 
+    top: 4vw; 
+}
+
+#head h1{
+    font-weight: bold;
+    font-size: 4vw; 
+}
+#animation{
+    margin-bottom:-7vw; 
+}
+/* h1{
+    font-size: 3vw;
+}
+p{
+    font-size: 1.2vw;
+} */
+
+.masthead{
+    width: 98,5vw;
+    height: 48vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.mastheadThree{
+    width: 70,5vw;   
+    height: 52vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.masthead ,p{
+    color: white;
+    text-align: justify;
+    font-size: 1.3vw;
+}
+.masthead h1{ 
+    text-align: start;
+    font-weight: bold;
+    margin-top: 0.5em;
+    font-size: 3.2vw;
+    text-transform: uppercase;
+
+}
+.mastheadtwo h2{ 
+    text-align: end;
+    margin-top: 0.5vw;
+    font-size: 3vw;
+    text-transform: uppercase;
+
+}
+#line{
+    
+    width: 8vw;
+    height: 0.7vw;
+    font-size: 1vw;
+    margin-left: 1vw;
+    background-color: #f9b442;
+}
+
+#bann-btn-1{
+    font-size:1.5vw ;
+    text-align: left;
+    border-radius:0em; 
+    background: #f9b442;
+   
+    color: black;
+    border: 1px solid #f9b442;
+}
+#bann-btn-1:hover{
+    border: 1px solid black;
+    background:white;
+    color:#333;
+}
+.bonhome_image{
+    width: 25vw;
+    height: 15vw;
+    position: absolute;
+    background-size:cover; 
+    margin-top: -2em;
+}  
+.mastheadtwo,.mastheadFour{
+    width: 98,5vw;
+    height: 54vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.mastheadtwo h2,.mastheadThree h2,.mastheadFour h2{ 
+    text-transform: uppercase;
+    color: white;
+    font-size: 3vw;
+    margin-top: 2vw;
+
+
+}
+   
+.okk{
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+}
+
+.mastheadDb{
+    width: 98,5vw;
+    height: 54vw;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+#line1{
+    width: 9vw; 
+    height: 0.5vw;
+    margin-left: 10vw;
+    margin-bottom: 4vw;
+    background-color: #f9b442;
+}
+#line1_0{
+    margin-bottom: 4vw;
+}
+#containt{
+    margin-right:0vw;
+}
+span{
+    font-weight: bold;
+}
+.refe{
+    font-size: 4vw;
+   }
+    
+#containtThree{
+    margin-left:4.5vw;
+}
+
+@media(max-width:1400px){  
+    /* .mastheadtwo{
+    height: 130%;
+    } */
+
+}
+@media(max-width:1200px){  
+    /* .masthead{
+    height: 140%;
+    } */
+}
+
+@media(max-width:990px){
+    /* .masthead{
+    height: 150%;
+    } */
+    /* .mastheadtwo{
+        height: 130%;
+        } */
+    /* .bonhome_image{
+        width:15em;
+        height:7em;
+    }  */
+    #containtThree{
+        margin-left:6vw;
+    }
+}
+
+@media(max-width:768px){
+    
+    #containtThree p{
+        margin-left:1vw;
+        font-size: 1.6vw;
+    }
+    #containtThree{
+        margin-left:0vw;
+        
+    }
+    .masthead{
+        width: 98.5vw;
+        height: 48vh;
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+     #line{
+        width: 8vw;
+        height: 0.7vw;
+        margin-top:-5vw;
+        font-size: 1.2vw;
+        margin-left: 2.5vw;
+        background-color: #f9b442;
+    }
+
+    .contenu11{
+        margin-top: -2.5em;
+        font-size:1.8vw;
+    }
+
+    .bonhome_image{
+    
+        margin-top: -7em;
+    } 
+
+    #containt{
+        margin-right: 0vw;
+    }
+
+    #contenu2 p{
+        font-size:1.6vw;
+        margin-top: -2.5vw;
+    }
+
+    #line1_0{
+        margin-bottom: 2vw;
+    }
+    #line1{
+        width: 9vw;   
+        height: 0.8vw;
+        margin-top: -3vw;
+        margin-left: 15vw;
+        
+        background-color: #f9b442;
+    }
+
+     #bann-btn-2{
+        margin-top: -5vw;
+        
+        
+    } 
+
+    
+#line2{
+   
+    margin-top: -2vw;
+    margin-bottom: 1vw;
+
+}
+
+#line2_0{
+    
+    margin-bottom: 3vw;
+} 
+
+    #bann-1{
+        margin-top: -8vw;
+       
+    }
+   img .domainDeCompetence{
+        margin-top: -5vw;
+         margin-left:5vw; 
+    }
+    #line3{
+        width: 10vw; 
+        height: 0.5vw;
+        margin-bottom: 10vw;
+        margin-top: -6vw;
+        margin-left: 24vw;
+        background-color: #f9b442;
+    }
+
+    .mastheadFour .container{
+        margin-top: -8vw;
+    }
+
+    #first{ 
+        margin-top: 4vw;
+    }
+
+    #footText{
+        margin-top:-6vw;
+       
+    }
+    #compText{
+   
+        margin-left: 10vw;
+        font-size:3vw;
+    }
+    
+    
+}
+
+@media(max-width:950px){
+    /* .bonhome_image{
+        width:10em;
+        height:5em;
+    }   */
+   
+    /* .mastheadtwo{
+        height: 150%;
+    }
+    .mastheadThree{
+        height: 150%;
+    } */
+}
+
+@media(max-width:400px){
+    /* .mastheadThree{
+        height: 170%;
+    }
+     */
+     .refe{
+        font-size: 8vw;
+       }
+    
+}
+
+
+.container h2,h5{
+    color:white ;
+}
+#line2{
+    width: 8vw; 
+    height: 0.5vw;
+   
+    margin-bottom: 1vw;
+    background-color: #f9b442;
+}
+/* 
+#line2{
+    width: 8vw; 
+    height: 0.5vw;
+    margin-top: -2vw;
+    margin-bottom: 1vw;
+    background-color: #f9b442;
+} */
+
+/* #line2_0{
+    margin-bottom: 4vw;
+    margin-top: -4.5vw;
+} */
+#line2_0{
+    margin-bottom: 4vw;
+    margin-top: -2.5vw;
+}
+.bonhome2_image{
+    width: 20vw;
+    height: 15vw;
+    position: absolute;
+    background-size:cover;
+    margin-top: -3vw;
+}
+
+.domainDeCompetence{
+    width: 48vw;
+    height: 29vw;
+    
+}
+#compText{
+   
+    margin-left: 15vw;
+    font-size:3vw;
+}
+#footText{
+    margin-left: 14vw;
+    font-size: 1.8vw;
+    color: rgb(176, 176, 176);
+}
+#line3{
+    width: 10vw; 
+    height: 0.5vw;
+    margin-bottom: 4vw; 
+    margin-left: 28vw;
+    background-color: #f9b442;
+}
+.mastheadFour h2{
+    margin-left: -2.5vw;
+    font-size: 2.5vw;
+}
+.mastheadFour h5{
+    font-size: 1.5vw;
+}
+#mastheadFive{
+    margin-top: 6vw;
+}
+.footer{
+    background-color: black;
+}
+.contacter{
+    color:#f9b442;
+    font-size: 3vw;
+}
+.text-end p,h6{
+    color: white;
+}
+.text-end i{
+    color: #f9b442;
+    font-size: 2vw;
+}
+#newsletter{
+    text-transform: capitalize;
+}
+.newsletter{
+    background-color: #64350d;
+   
+}
+.reference{
+    margin-bottom: 3vw;
+    font-size: 4vw;
+}
+
+#btnSend{
+    height: 1.8em;
+    font-size:1.8vw;
+    margin-bottom: 5vw;
+    border-radius:0em;
+    background: rgb(21, 21, 21);
+    background: -webkit-linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    background: linear-gradient(to top, rgb(72, 72, 72), rgb(72, 72, 72));
+    color: white;
+    border: 1px solid rgb(72, 72, 72);
+}
+
+
+#btnSend:hover{
+    border: 1px solid black;
+    background:white;
+    color:#333;
+}
+#email{
+    height: 1.8em;
+    font-size:1.8vw;
+    text-align: center;
+    border-radius:0em;
+}
+
+#nav ul.active{
+    color: #e66030;
+}
+
+#emailFooter{
+    margin-left: 2.5vw;
+}
+#icons{
+  margin-right: 0.5vw;
+}

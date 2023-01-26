@@ -1,0 +1,228 @@
+<!-- 
+<div class="main">
+    
+    <span class="p-float-label">
+        <input id="float-input" type="text" pInputText> 
+        <label for="float-input">Username</label>
+    </span>
+  
+</div> 
+
+<button pButton type="button" label="Click" ></button>
+<p-button label="Click" ></p-button>
+
+<button pButton type="button" icon="pi pi-check" iconPos="left"></button> -->
+
+<div class="container" id="main-container">
+    <div class="container" >
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="initForm()" data-bs-target="#exampleModal">
+            Add User
+        </button>
+        
+    </div>
+    <div class="row">
+        <div *ngFor="let ut of utilisateurs" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <!-- <div class="card-body row">
+                    <div class="col-6">
+                        <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{ut.nom}}</h5>
+                        <p class="m-0">{{ut.nom}}</p>
+                    </div>
+                </div> -->
+                <div class="card-body row">
+
+                    <div class="col-6" *ngFor="let im of ut.utilisateurImage" >
+                        <a href=""><img [src]="im.url" alt="" class="img-fluid rounded-circle"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{ut.nom}}</h5>
+                        <p class="m-0">{{ut.prenom}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{ut.username}}</a></li>
+                    <li class="list-group-item"><i class="fa fa-phone float-right"></i>{{ut.password}}</li>
+                </ul>
+                <div class="col-6 card-title align-self-center mb-0" *ngFor="let rl of ut.roles">
+                       
+                    <p class="m-0">{{rl.libelle}}</p> 
+                </div>
+                
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a  class="btn btn-primary tooltips" data-placement="top" type="button" data-bs-toggle="modal" (click)="onLoadUtilisateur(ut)" 
+                        data-bs-target="#exampleModal" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a  class="btn btn-secondary tooltips" data-placement="top" type="button" data-bs-toggle="modal" (click)="deleteUtilisateur(ut)"  data-original-title="Delete"><i class="fa fa-times"></i></a>
+
+                    </div>
+                    <div class="float-left btn-group btn-group-sm">
+                        <a  class="btn btn-warning tooltips" data-placement="top" type="button" data-bs-target="#addRoleToUser" data-bs-toggle="modal" (click)="onLoadUtilisateurRole(ut)" data-original-title="Delete"><i class="fa fa-edit"></i></a>
+                    </div>
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal 1 -->
+<div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div *ngIf="message" class="modal-header">
+            <span class="alert alert-info">{{message}}</span>
+        </div>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form [formGroup]="utilisateurForm"  (ngSubmit)="saveOrUpdateUtilisateur()">
+
+                <div class="row">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input [(ngModel)]="utilisateur.nom"  name="nom"  formControlName="nom"
+                         matInput required  placeholder="Entrer ici"/>
+                         <mat-label>Nom</mat-label>
+                    </mat-form-field>  
+                </div>
+                <div class="row">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input [(ngModel)]="utilisateur.prenom"  name="prenom"  formControlName="prenom"
+                         matInput required  placeholder="Entrer ici"/>
+                         <mat-label>Prenom</mat-label>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input [(ngModel)]="utilisateur.username"  name="username"   formControlName="username"
+                         matInput required  placeholder="Entrer email"/>
+                         <mat-label>Username(Email)</mat-label>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="full-width" appearance="outline">
+                         
+                         <input [(ngModel)]="utilisateur.password"  name="password"  formControlName="password"
+                        matInput  type="password" placeholder="Entrer password"/>
+                        <mat-label>Password</mat-label>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="Image">Photo</label>
+                    <input type="file" (change)="onFileSelected($event)" multiple value="#selectFile" accept="image/*" #fileInput class="validate">
+                </div>
+                <div class="mt-5">
+                    <div class="row">
+
+                        <mat-grid-list cols="3" rowHeight="1:1">
+
+                            <mat-grid-tile *ngFor="let file of utilisateur.utilisateurImage; let i=index">
+                                <div style="position: relative;">
+                                    <span class="btn-remove-image" (click)="removeImage(i)">X</span>
+                                    <img [src]="file.url" alt="image" width="100px" height="100px">
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+
+                    </div>
+                </div>
+                <button [disabled]="utilisateurForm.invalid"  id="btnSend" class="btn btn-primary" type="submit" >Enregistrer</button>
+            </form> 
+      </div>   
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  (click)="initForm()" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal add role to user -->
+<div class="modal fade" id="addRoleToUser"  aria-labelledby="addRoleToUser">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div *ngIf="message" class="modal-header">
+              <span class="alert alert-info">{{message}}</span>
+          </div>
+          <h1 class="modal-title fs-5" id="addRoleToUser">Add User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+              <form [formGroup]="utilisateurRoleForm"  (ngSubmit)="onSaveUtilisateurRole()">
+                <div class="form-group">  
+                    <label class="control-label">Role:</label> 
+                    <select class="form-control" id="libelle" [(ngModel)]="utilisateurRole.libelle"  aria-placeholder="selectionner Role" formControlName="libelle" required>
+                        <option *ngFor="let role of roles" [ngValue]="role.libelle">{{role.libelle}}</option>
+                    </select>
+                </div>   
+                  <button  data-bs-dismiss="modal" id="btnSend" class="btn btn-primary" type="submit" >Enregistrer</button>
+              </form>        
+        </div>   
+        <div class="modal-footer">  
+          <button type="button" class="btn btn-secondary"  (click)="initForm()"  data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+ 
+<!-- Modal 2 -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">  
+              <form  class="example-form" (ngSubmit)="saveUtilisateur()">
+                  <div class="row">
+                      <mat-form-field class="full-width" appearance="outline">
+                          <input [(ngModel)]="utilisateurData.nom"  name="username"
+                           matInput required  placeholder="Entrer ici"/>
+                           <mat-label>Nom</mat-label>
+                      </mat-form-field>
+                  </div>
+                  <div class="row">
+                      <mat-form-field class="full-width" appearance="outline">
+                          
+                          <input [(ngModel)]="utilisateurData.prenom"  name="password" 
+                          matInput required type="text" placeholder="Entrer ici" style="color:gray;" />
+                          <mat-label>Premon</mat-label>
+                      </mat-form-field>
+                  </div>
+                  <div class="row">
+                      <mat-form-field class="full-width" appearance="outline">
+                          <input [(ngModel)]="utilisateurData.username"  name="username"
+                           matInput required  placeholder="Entrer ici"/>
+                           <mat-label>Username(Email)</mat-label>
+                      </mat-form-field>
+                  </div>
+                  <div class="row">
+                      <mat-form-field class="full-width" appearance="outline"> 
+                          <input [(ngModel)]="utilisateurData.password"  name="password" 
+                          matInput required type="password" placeholder="Entrer ici"/>
+                          <mat-label>Password</mat-label>
+                      </mat-form-field>
+                  </div>   
+                  <div class="container text-center" >
+                      <button mat-button id="btnSend" type="submit">Enregistrer</button>
+                  </div>
+              </form>       
+        </div>   
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,97 @@
+
+ <!-- <div class="card col-md-12">
+    <p-table [value]="newsletters" responsiveLayout="scroll">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"  ></button> 
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search keyword" />
+            </span>  
+        </div> 
+      </ng-template>
+      <ng-template   pTemplate="header">
+          <tr>
+              <th *ngFor="let col of newsletterSchema" pSortableColumn="{{col.field}}">{{col.header}} <p-sortIcon field="{{col.field}}"></p-sortIcon></th> 
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-role>
+          <tr> 
+              <td *ngFor="let col of newsletterSchema">{{role[col.field]}}</td>
+              
+          </tr>   
+      </ng-template>
+    </p-table>
+  </div>  -->
+
+  <div class="card">
+    <!-- <h5>Session Storage</h5>   -->
+    <p-table #dt1 [value]="newsletters" selectionMode="single" styleClass="p-datatable-sm" [tableStyle]="{'min-width': '50rem'}" responsiveLayout="scroll"[rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" 
+    [(selection)]="newsletter" dataKey="id" styleClass="p-datatable-gridlines"  [paginator]="true" currentPageReportTemplate="Affichage de {last} sur {totalRecords} elements"
+       stateStorage="local" stateKey="statedemo-local">
+        <ng-template pTemplate="caption">
+            <div class="flex">  
+                <!-- <button type="button" pButton pRipple icon="pi pi-file" (click)="dt1.exportCSV()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                 -->
+                 <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                 <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+            </div>     
+        </ng-template>
+        <ng-template pTemplate="header" class="hd">
+            <tr> 
+                <th pSortableColumn="nom">Nom <p-sortIcon field="nom"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="valid">Status <p-sortIcon field="valid"></p-sortIcon></th>
+                <th pSortableColumn="dateCreation">dateCreation <p-sortIcon field="dateCreation"></p-sortIcon></th>
+            </tr>
+            <tr>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'nom', 'contains')" [value]="$any(dt1.filters['nom'])?.value"  placeholder="Filtrer par Nom" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'email', 'contains')" [value]="$any(dt1.filters['email'])?.value"  placeholder="Filtrer par email" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'valid', 'contains')" [value]="$any(dt1.filters['valid'])?.value"  placeholder="Filtrer par validité" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'dateCreation  | date: MM/dd/yyyy', 'contains')" [value]="$any(dt1.filters['dateCreation'])?.value" placeholder="Filtrer par date" class="p-column-filter">
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-newslet>
+            <tr style="height: 10px !important;" [pSelectableRow]="newslet" >
+                <td>
+                    <span class="p-column-title">Nom</span>
+                    {{newslet.nom}} 
+                </td> 
+                <td>
+                    <span class="p-column-title">email</span>
+                    <span>{{newslet.email}}</span>
+                </td>
+                <td>
+                    <span class="p-column-title">Status</span>
+                    <span >{{newslet.valid}}</span>
+                </td>
+                <td>
+                    <span class="p-column-title">Date </span>
+                    <span >{{newslet.dateCreation | date: 'dd/MM/yyyy' }}</span>
+                </td>
+
+                <td>
+                    <button *ngIf="login.getUserRole()=='ROLE_ADMIN'" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" style="height: 20px; width:30px;" (click)="onDeleteNewsletters(newslet)"></button>
+                </td> 
+            </tr>    
+        </ng-template>  
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">Aucun Nesletter trouvé.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+  

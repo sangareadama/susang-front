@@ -1,0 +1,49 @@
+<p>okkk pas de soucis</p>
+<div class="containtFirst" >
+    <div class="color-overly">
+      <div class="container">
+        <div class="col-12" *ngFor="let ps of presentations">
+          <div class="row under-nav">
+            <div class="col-8"> 
+                <!-- <h1 > Des chasseurs relâchés dans la villeee</h1>
+                <br>
+                <br> -->  
+                <h1>{{ps.titre1}}</h1>
+            </div> 
+          </div>
+          <br>
+          <div class="row"> 
+            <div class="col-3" id="line">
+            </div>
+          </div>
+          <br>
+          <div class="row ">
+            <div class="col-11">
+              <!-- <p>Nous sommes <span>SUZANG GROUP</span>, nous sortons du bois sacré. Une armée de chasseurs initiés aux arts de la 
+              guerilla urbaine. Nous chassons le consammateur, traquons ses attentes, reniflons ses besoins. Depuis 2014 nous pistons
+              les tendances des marchés, pour accrocher le succès à votre tableau de chasse. <span><br></span>
+              <span>"Si nous traquons le gibier c'est pour l'accrocher à votre tableau."</span>
+              </p> -->
+
+              <br>
+              <br>
+              <p>{{ps.contenu1}}</p>  
+            </div>
+            <!-- <div class="container" >
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add User
+              </button>       
+           </div> -->
+           <div class="container" >
+            <button type="button" class="btn btn-primary" (click)="onLoadPresentation(ps)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Update Info 
+            </button>       
+         </div>  
+            <div class="col-6"> 
+                <div><img [src]="bonhomme"  class="bonhome" alt=""></div>
+            </div>
+          </div>
+        </div>  
+      </div>
+      
+    </div>

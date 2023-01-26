@@ -1,0 +1,66 @@
+
+<body class="bg_image" style="background-image:url(../../assets/images/PAGESITESUZANG-BG-05A.png)">
+
+  <div class="nav">
+    <app-navbar-shared></app-navbar-shared>
+  </div>
+  <div >
+    <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img src="../../assets/images/RECADRAGE-111.jpg" id="carouselImage" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../../assets/images/RECADRAGE-121.jpg" id="carouselImage" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" >
+          <img src="../../assets/images/RECADRAGE-101.jpg" id="carouselImage" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="containtFirst" >
+        <div class="color-overly">
+          <div class="container">
+            <div class="col-12" *ngFor="let pc of clients">
+              <div class="row under-nav" >
+                <div  class="col-10">
+                    <!-- <h1 >Le meilleur, rien de moins</h1> -->
+                    <!-- <h1>{{pc.titre1}}</h1> -->
+                    <h1 [innerHTML]="pc.titre1"></h1>
+                </div>
+              </div>
+              <br>  
+              <div id="line" class="row"> 
+                <div class="col-3" >
+                </div>
+              </div>
+              <br>
+              <div class="row ">
+                <div class="col-11">
+                  <p [innerHTML]="pc.contenu1"></p>
+                  <!-- <p>{{pc.contenu1}}</p>   -->
+                  <!-- <p>
+                    Le terrain est impitoyable, tout comme le bois sacré. Nous avons développé la culture du courage.<span><br></span> 
+                    Y compris le courage de se remettre en cause. <span><br></span>
+                    Nous manions la confidentialité comme une stratégie à part entière au même titre que la publicité. <span><br></span>
+                    Car en matière de chasse, la surprise est un art qui permet de prendre avantage.<span><br></span>
+                    Nous visons l’excellence. Nous débusquons les meilleures technologies, pourchassons les meilleures solutions pour apporter les réponses les plus adaptées aux défis que vous affrontez.<span><br></span>
+                    Sur tous les canaux, nous planifions, préparons et organisons minutieusement cette rencontre 
+                    entre vous et votre client.
+                  </p> -->
+                  
+                </div>
+                <div class="col-6">
+                    <div><img [src]="bonhomme"  class="bonhome" alt=""></div>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    
+    <app-footer-shared class="footerClient"></app-footer-shared>
+  </div>
+  
+</body>  
+     

@@ -1,0 +1,150 @@
+<!-- <<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="https://suzang-group.com/wp-content/uploads/2016/03/logoweb.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">ACCUEIL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">PRESENTATION</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">ATOUTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">SERVICES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">CLIENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">CONTACTS</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div *ngFor="let ut of utilisateurs" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-6">
+                        <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{ut.nom}}</h5>
+                        <p class="m-0">{{ut.nom}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{ut.username}}</a></li>
+                    <li class="list-group-item"><i class="fa fa-phone float-right"></i>{{ut.password}}</li>
+                </ul>
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </div>
+                    <ul class="social-links list-inline mb-0">
+                        <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ --> 
+   
+  <ngx-ui-loader
+   fgsColor="#f9b442"
+    text="Loading..."
+    pbColor="#f9b442"
+    textColor="#f9b442">
+  </ngx-ui-loader>
+  <lib-ng-toast></lib-ng-toast>      
+  <div ngxUiLoaderBlurred (blur)="10">
+    <router-outlet></router-outlet>
+  </div>
+
+ <!-- <quill-editor [styles]="{height:'200px'}" (onEditorChanged)="changeEditor($event)"></quill-editor> -->
+
+  <!-- <angular-editor [placeholder]="'Enter text here...'" ></angular-editor>
+   -->
+<!-- 
+  <div class="spinner-border text-warning"  style="background-image:url(../../assets/images/nav_home3.png) ;" style="width: 5rem; height:5rem;" role="status" *ngIf="loader">
+    <span class="visually-hidden">Loading...</span>
+  </div> -->
+    
+  <!-- <p-gmap [options]="options" [overlays]="overlays" [style]="{'width':'100%','height':'320px'}" ></p-gmap> -->
+
+
+  <!-- <p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">  
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+<div class="card">
+  <h5>Severities</h5>
+  <button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success"></button>
+</div>
+ -->
+
+
+
+ 
+  <!-- <angular-editor [placeholder]="'Enter text here...'"[config]="editorConfig"[(ngModel)]="htmlContent"></angular-editor>
+
+
+  <p>Resultat</p>        
+  {{htmlContent}} -->
+   
+<!-- 
+ <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+ <app-header
+ [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth">
+</app-header>
+ <app-body
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth">
+ 
+ </app-body> -->
+ 
+
+
+<!-- <app-home-main></app-home-main> -->
+<!-- <app-slide-home></app-slide-home> -->
+ 

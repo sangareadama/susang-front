@@ -1,0 +1,122 @@
+.btn-primary{
+    height: 2em;
+    margin-right: 5em;
+    border-radius:0.2em; 
+    background: rgb(21, 21, 21);
+    background: -webkit-linear-gradient(to top, #64350d,#64350d);
+    background: linear-gradient(to top, #64350d,#64350d);
+    color: white;
+    border: 1px solid #64350d;
+}
+
+
+.btn-primary:hover{
+    border: 1px solid black;
+    background:#f9b442;
+    color:#333;
+}
+
+.col{
+    text-align: center;
+  }
+
+
+  :host::ng-deep .panelStyle.p-panel .p-panel-header{
+    /* background-color: #f9b442; */
+    border-color:#f9b442;
+    height: 2em;
+
+  } 
+  :host::ng-deep .panelStyle.p-panel .p-panel-title{
+    color: #f9b442;
+  } 
+  :host::ng-deep .panelStyle.p-panel .p-panel-content{
+    border-color:#f9b442;
+
+  } 
+
+mat-card-content{
+    text-align: center;
+}
+mat-card-title{
+    align-items: flex-end;
+}
+
+.example-card {
+    
+    margin-bottom: 15px;
+  }
+
+  #btnplus{
+    height: 3vw; 
+    width: 8vw; 
+    margin-top: 3vw;
+    align-content: center;
+    margin-bottom: 5vw;
+    font-size:1vw;
+    border-radius:0.3em;
+    background:#64350d;
+    background: -webkit-linear-gradient(to top, #64350d, #64350d);
+    background: linear-gradient(to top,#64350d,#64350d);
+    color: white;
+    border: 1px solid #64350d;
+}
+#btnplus:hover{
+    font-weight: bold;
+    border: 2px solid #64350d;
+    background:white;
+    color:#64350d;
+}
+
+#btnService{
+    margin-top: 3vw;
+    margin-bottom: 5vw;
+}
+
+
+#btnSend{
+    
+    height: 3vw; 
+    width: 23vw;
+    font-size:1.5vw;
+    font-weight: bold;
+    border-radius:0.2em;
+    background:#f9b442;
+    background: -webkit-linear-gradient(to top, #f9b442, #f9b442);
+    background: linear-gradient(to top,#f9b442,#f9b442);
+    color: black;
+    border: 1px solid #f9b442;
+} 
+#btnSend:hover{
+    font-weight: bold;
+    border: 2px solid #f9b442;
+    background:white;
+    color:#f9b442;
+}
+
+#btnUpdateItem{
+    background:#64350d;
+    background: -webkit-linear-gradient(to top, #64350d, #64350d);
+    background: linear-gradient(to top,#64350d,#64350d);
+    color: white;
+    border: 1px solid #64350d;
+}
+#btnUpdateItem:hover{
+
+    font-weight: bold;
+    border: 2px solid #64350d;
+    background:white;
+    color:#64350d;
+}
+
+#btnTile{
+    background-color:#f9b442;;
+}
+    
+.box p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  } 

@@ -1,0 +1,1145 @@
+
+<div class="row">
+  <div class="card col-md-10">
+    <p-table [value]="accueils" responsiveLayout="scroll">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <button pButton pRipple label="Voir page" icon="pi pi-visible" class="p-button-outlined p-button-warning" routerLink="/accueil" ></button>
+           
+        </div> 
+      </ng-template>
+      <ng-template   pTemplate="header">
+        <tr >
+          <th style="width:20%" pSortableColumn="titre">Titre <p-sortIcon field="price"></p-sortIcon></th>
+          <th style="width:35%" pSortableColumn="contenu" style="min-width:10rem;">Contenus Gauche<p-sortIcon field="contenu"></p-sortIcon></th>
+          <th style="width:35%" pSortableColumn="contenu" style="min-width:10rem;">Contenus Droit<p-sortIcon field="contenu"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-ap >
+        <tr>
+          <td ><div class="box" [innerHTML]="ap.titre11"></div></td>    
+          <td ><div class="box" [innerHTML]="ap.contenu11"> </div></td>
+          <td ></td>
+          <td  >
+            <button pButton pRipple icon="pi pi-pencil" (click)="UpdateB1PageAccueilDialog = true " (click)="showUpdatB1Dialog(ap)"  class="p-button-rounded p-button-success" ></button>   
+          </td>
+          <td >
+            <button type="button"    pButton icon="pi pi-external-link"  (click)="visibiliteB1Dialogue=true" (click)="showUpdatB1Dialog(ap)" label="View"></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><div class="box" [innerHTML]="ap.titre22"></div></td>    
+          <td ><div class="box" [innerHTML]="ap.contenu21"> </div></td>
+          <td ><div class="box" [innerHTML]="ap.contenu22"> </div></td>
+          <td >
+            <button pButton pRipple icon="pi pi-pencil" (click)="UpdateB2PageAccueilDialog = true " (click)="showUpdatB1Dialog(ap)"  class="p-button-rounded p-button-success" ></button>   
+          </td>
+          <td >
+            <button type="button"    pButton icon="pi pi-external-link"  (click)="visibiliteB2Dialogue=true" (click)="showUpdatB1Dialog(ap)" label="View"></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td ><div class="box" [innerHTML]="ap.titre33"></div></td>    
+          <td ><div class="box" [innerHTML]="ap.contenu31"> </div></td>
+          <td><div class="box" [innerHTML]="ap.contenu32"> </div></td>
+          <td>
+            <button pButton pRipple icon="pi pi-pencil" (click)="UpdateB3PageAccueilDialog = true " (click)="showUpdatB1Dialog(ap)"  class="p-button-rounded p-button-success" ></button>   
+          </td>
+          <td >
+            <button type="button"    pButton icon="pi pi-external-link" (click)="visibiliteB3Dialogue=true" (click)="showUpdatB1Dialog(ap)" label="View"></button>
+          </td>
+        </tr>    
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+  <!-- modales de modification -->
+<p-dialog [(visible)]="UpdateB1PageAccueilDialog" [style]="{width: '800px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="accueilFormUpdate"  >  
+        <div class="col-12">
+          <div class="field">
+            <label style="font-size:2em;" for="titre">Titre </label>
+            <p-editor  [(ngModel)]="PageAccueil.titre11" formControlName="titre11" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.titre11">titre is required.</small>
+          </div> 
+  
+          <div class="field">
+            <label style="font-size:2em;" for="titre">contenu </label>
+            <p-editor  [(ngModel)]="PageAccueil.contenu11" formControlName="contenu11" formControlName="contenu11" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.contenu11">titre is required.</small>
+          </div>
+          <div class="col-12" >
+            <div class="row" >
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir du haut</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut1" formControlName="decalageHaut1"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir de la gauche</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche1" formControlName="decalageGauche1"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+            </div> 
+          </div>   
+
+           <div  style="display: none;">
+            <div class="col-12" >
+              <div class="row" >
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir du haut</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut2" formControlName="decalageHaut2"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir de la gauche</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche2" formControlName="decalageGauche2"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+              </div> 
+            </div> 
+            <div class="col-12" >
+              <div class="row" >
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir du haut</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut3" formControlName="decalageHaut3"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir de la gauche</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche3" formControlName="decalageGauche3"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+              </div> 
+            </div> 
+            <div class="field">
+              <label for="titre">Titre 2 </label>
+              <p-editor  [(ngModel)]="PageAccueil.titre22" formControlName="titre22" formControlName="titre22" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.titre22">titre is required.</small>
+            </div> 
+            <div  class="field">
+              <label for="titre">Contenu Gauche </label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu21" formControlName="contenu21" formControlName="contenu21" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu21">titre is required.</small>
+            </div> 
+            <div class="field">
+              <label for="titre">Contenu Droite </label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu22" formControlName="contenu22" formControlName="contenu22" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu22">titre is required.</small>
+            </div>
+            <div class="field">
+              <label for="titre">Titre 3 </label>
+              <p-editor  [(ngModel)]="PageAccueil.titre33" formControlName="titre33" formControlName="titre33" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.titre33">titre is required.</small>
+            </div> 
+            <div  class="field">
+              <label for="titre">Contenu Gauche</label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu31" formControlName="contenu31" formControlName="contenu31" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu31">titre is required.</small>
+            </div>
+            <div  class="field">
+              <label for="titre">Contenu Droite </label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu32" formControlName="contenu32" formControlName="contenu32" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu11">titre is required.</small>
+            </div> 
+           </div>
+        </div>      
+    </form>         
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-warning" (click)="UpdateB1PageAccueilDialog=false" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-outlined" (click)="UpdateAccueilPage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+<p-dialog [(visible)]="UpdateB2PageAccueilDialog" [style]="{width: '800px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="accueilFormUpdate"  >  
+        
+        <div class="col-12">
+          <div class=" col-8 field">
+            <label style="font-size:2em;" for="titre">Titre 2 </label>
+            <p-editor  [(ngModel)]="PageAccueil.titre22" formControlName="titre22" formControlName="titre22" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.titre22">titre is required.</small>
+          </div>  
+          <br>     
+          <div  class="row">
+            <div class="col-sm-12 col-lg-6 ">
+              <div  class="field">
+                <label style="font-size:2em;" for="titre">Contenu Gauche </label>
+                <p-editor  [(ngModel)]="PageAccueil.contenu21" formControlName="contenu21" formControlName="contenu21" ></p-editor>
+                <small class="p-error" *ngIf="submitted && !PageAccueil.contenu21">titre is required.</small>
+              </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 "> 
+              <div class="field">
+                <label style="font-size:2em;" for="titre">Contenu Droite </label>
+                <p-editor  [(ngModel)]="PageAccueil.contenu22" formControlName="contenu22" formControlName="contenu22" ></p-editor>
+                <small class="p-error" *ngIf="submitted && !PageAccueil.contenu22">titre is required.</small>
+              </div>
+            </div>
+            <div class="col-12" >
+              <div class="row" >
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir du haut</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut2" formControlName="decalageHaut2"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir de la gauche</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche2" formControlName="decalageGauche2"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+              </div> 
+            </div>   
+          </div>
+          <div  style="display: none;">
+            <div class="col-12" >
+              <div class="row" >
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir du haut</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut3" formControlName="decalageHaut3"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir de la gauche</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche3" formControlName="decalageGauche3"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+              </div> 
+            </div>   
+            <div class="col-12" >
+              <div class="row" >
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir du haut</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut1" formControlName="decalageHaut1"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+                <div class="col-md-6 col-sm-12 ">
+                  <label for="horizontal">Décalage a partir de la gauche</label>
+                  <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche1" formControlName="decalageGauche1"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                  decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                  </p-inputNumber>
+                </div>
+              </div> 
+            </div>   
+            <div class="field">
+              <label style="font-size:2em;" for="titre">Titre </label>
+              <p-editor  [(ngModel)]="PageAccueil.titre11" formControlName="titre11" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.titre11">titre is required.</small>
+            </div> 
+    
+            <div class="field">
+              <label style="font-size:2em;" for="titre">contenu </label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu11" formControlName="contenu11" formControlName="contenu11" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu11">titre is required.</small>
+            </div>
+            <div class="field">
+              <label style="font-size:2em;" for="titre">Titre 3 </label>
+              <p-editor  [(ngModel)]="PageAccueil.titre33" formControlName="titre33" formControlName="titre33" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.titre33">titre is required.</small>
+            </div> 
+            <div  class="field">
+              <label style="font-size:2em;" for="titre">Contenu Gauche</label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu31" formControlName="contenu31" formControlName="contenu31" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu31">titre is required.</small>
+            </div>
+            <div  class="field">
+              <label  style="font-size:2em;" for="titre">Contenu Droite </label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu32" formControlName="contenu32" formControlName="contenu32" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu11">titre is required.</small>
+            </div> 
+           </div>
+        </div>      
+    </form>         
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-warning" (click)="UpdateB2PageAccueilDialog=false" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-outlined" (click)="UpdateAccueilPage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="UpdateB3PageAccueilDialog" [style]="{width: '800px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="accueilFormUpdate"  >  
+      <div class="col-12">
+        <div class="col-8 field">
+          <label style="font-size:2em;" for="titre">Titre 3 </label>
+          <p-editor  [(ngModel)]="PageAccueil.titre33" formControlName="titre33" formControlName="titre33" ></p-editor>
+          <small class="p-error" *ngIf="submitted && !PageAccueil.titre33">titre is required.</small>
+        </div>  
+        <br>     
+        <div  class="row">
+          <div class="col-sm-12 col-lg-6">
+            <div  class="field">
+              <label style="font-size:2em;" for="titre">Contenu Gauche</label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu31" formControlName="contenu31" formControlName="contenu31" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu31">titre is required.</small>
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-6"> 
+            <div  class="field">
+              <label  style="font-size:2em;" for="titre">Contenu Droite </label>
+              <p-editor  [(ngModel)]="PageAccueil.contenu32" formControlName="contenu32" formControlName="contenu32" ></p-editor>
+              <small class="p-error" *ngIf="submitted && !PageAccueil.contenu11">titre is required.</small>
+            </div> 
+          </div>
+          <div class="col-12" >
+            <div class="row" >
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir du haut</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut3" formControlName="decalageHaut3"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir de la gauche</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche3" formControlName="decalageGauche3"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+            </div> 
+          </div>   
+          
+        </div>
+        <div  style="display: none;">
+          <div class="col-12" >
+            <div class="row" >
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir du haut</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut1" formControlName="decalageHaut1"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir de la gauche</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche1" formControlName="decalageGauche1"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+            </div> 
+          </div>   
+          <div class="col-12" >
+            <div class="row" >
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir du haut</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageHaut2" formControlName="decalageHaut2"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+              <div class="col-md-6 col-sm-12 ">
+                <label for="horizontal">Décalage a partir de la gauche</label>
+                <p-inputNumber [(ngModel)]="PageAccueil.decalageGauche2" formControlName="decalageGauche2"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+                decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+                </p-inputNumber>
+              </div>
+            </div> 
+          </div>   
+          <div class="field">
+            <label style="font-size:2em;" for="titre">Titre </label>
+            <p-editor  [(ngModel)]="PageAccueil.titre11" formControlName="titre11" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.titre11">titre is required.</small>
+          </div> 
+  
+          <div class="field">
+            <label style="font-size:2em;" for="titre">contenu </label>
+            <p-editor  [(ngModel)]="PageAccueil.contenu11" formControlName="contenu11" formControlName="contenu11" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.contenu11">titre is required.</small>
+          </div>
+          <div class="field">
+            <label for="titre">Titre 2 </label>
+            <p-editor  [(ngModel)]="PageAccueil.titre22" formControlName="titre22" formControlName="titre22" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.titre22">titre is required.</small>
+          </div> 
+          <div  class="field">
+            <label for="titre">Contenu Gauche </label>
+            <p-editor  [(ngModel)]="PageAccueil.contenu21" formControlName="contenu21" formControlName="contenu21" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.contenu21">titre is required.</small>
+          </div> 
+          <div class="field">
+            <label for="titre">Contenu Droite </label>
+            <p-editor  [(ngModel)]="PageAccueil.contenu22" formControlName="contenu22" formControlName="contenu22" ></p-editor>
+            <small class="p-error" *ngIf="submitted && !PageAccueil.contenu22">titre is required.</small>
+          </div>          
+         </div>
+      </div>  
+    </form>         
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-warning" (click)="UpdateB3PageAccueilDialog=false" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-outlined" (click)="UpdateAccueilPage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+<!-- modales de visibilite -->
+
+
+<p-dialog header="Voir plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [(visible)]="visibiliteB1Dialogue" [style]="{width: '60vw'}" [contentStyle]="{height: '400px'}">
+
+  <div class="row"> 
+    <div class="col-12">
+      <div class="field col-12 md:col-6">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="PageAccueil.titre11"></div>  
+        </p-panel>
+      </div>
+      <br>
+      <div class="field col-12 md:col-6">
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+         <p [innerHTML]="PageAccueil.contenu11"></p> 
+        </p-panel>
+      </div>    
+    </div>   
+  </div> 
+   
+  <ng-template pTemplate="footer">   
+      <button type="button" pButton pRipple icon="pi pi-times" (click)="visibiliteB1Dialogue=false" label="Dismiss" class="p-button-text"></button>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog  [(visible)]="visibiliteB2Dialogue" header="Voir plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body"  [style]="{width: '70vw'}" [contentStyle]="{height: '400px'}">
+  <div class="col-8 field">
+    <label style="font-size:2em;" for="titre">Titre 2 </label>
+    <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+      <div [innerHTML]="PageAccueil.titre22"></div>  
+    </p-panel>
+  </div>  
+  <br>     
+  <div  class="row">
+    <div class="col-sm-12 col-lg-6">
+      <div  class="field">
+        <label style="font-size:2em;" for="titre">Contenu Gauche</label>
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="PageAccueil.contenu21"></div>  
+        </p-panel>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6"> 
+      <div  class="field">
+        <label  style="font-size:2em;" for="titre">Contenu Droite </label>
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="PageAccueil.contenu22"></div>  
+        </p-panel>
+      </div> 
+    </div>
+  </div>
+  <ng-template pTemplate="footer">   
+      <button type="button" pButton pRipple icon="pi pi-times" (click)="visibiliteB2Dialogue=false" label="Dismiss" class="p-button-text"></button>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog   [(visible)]="visibiliteB3Dialogue" header="Voir plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [style]="{width: '70vw'}" [contentStyle]="{height: '400px'}">
+  <div class="col-8 field">
+    <label style="font-size:2em;" for="titre">Titre 2 </label>
+    <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+      <div [innerHTML]="PageAccueil.titre33"></div>  
+    </p-panel>
+  </div>  
+  <br>     
+  <div  class="row">
+    <div class="col-sm-12 col-lg-6">
+      <div  class="field">
+        <label style="font-size:2em;" for="titre">Contenu Gauche</label>
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="PageAccueil.contenu31"></div>  
+        </p-panel>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-6"> 
+      <div  class="field">
+        <label  style="font-size:2em;" for="titre">Contenu Droite </label>
+        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+          <div [innerHTML]="PageAccueil.contenu32"></div>  
+        </p-panel>
+      </div> 
+    </div>
+  </div>
+  <ng-template pTemplate="footer">   
+      <button type="button" pButton pRipple icon="pi pi-times" (click)="visibiliteB3Dialogue=false" label="Dismiss" class="p-button-text"></button>
+  </ng-template>
+</p-dialog>
+
+<!-- references -->
+
+<div class="card col-md-6">
+  <p-table [value]="references" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button pButton pRipple label="Ajouter référence" icon="pi pi-plus" class="p-button-outlined p-button-info"  (click)="openNewReference()" ></button>
+      </div>    
+    </ng-template>
+    <ng-template   pTemplate="header">
+      <tr >
+        <th pSortableColumn="titre">Nom <p-sortIcon field="price"></p-sortIcon></th>
+        <th pSortableColumn="contenu" style="min-width:10rem;">Image Logo<p-sortIcon field="contenu"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ref>
+      <tr>
+        <div [innerHTML]="ref.nom"></div>    
+        <td>  
+          <a href=""><img class="card-img-top img-responsive" 
+             src="{{this.referenceService.apiServerUrl+'/api/imageReference/'+ref.id}}" class="shadow-4" style="height: 75px;width: 75px" alt="">
+          </a>
+        </td>  
+          
+        <td>
+          <button pButton pRipple icon="pi pi-trash"  (click)="deleteReference(ref)" class="p-button-rounded p-button-warning" ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="referenceDialog" [style]="{width: '500px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form  [formGroup]="ReferenceForm"  >
+      <div class="row">
+        <div class="col-12">
+          <div class="field">
+            <label for="titre">Nom</label>
+            <input type="text" pInputText id="nom" [(ngModel)]="Reference.nom" formControlName="nom" required autofocus />
+            <small class="p-error" *ngIf="submitted && !Reference.nom">titre is required.</small>
+          </div> 
+          
+          
+          <div class="field">
+            <label for="image">Image</label>
+            <input type="file" accept="image/*" (change)="onSelectImage($event)" pInputText id="image" />
+            <img [src]="imgUrl" height="200" *ngIf="imgUrl" alt="">
+          </div> 
+
+        </div>
+      </div>
+    </form>      
+  </ng-template>   
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times"  (click)="referenceDialog=false"  (click)="AddContenuDialog=false" class="p-button-text" (click)="hideDialog()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addReference()" ></button> 
+  </ng-template>
+</p-dialog>
+
+<!-- ajout de new blocs -->
+<div class="card col-md-10">
+  <p-table [value]="pageAccueils" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()" ></button>
+          <!-- <span class="p-input-icon-left ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" placeholder="Search keyword" />
+          </span> -->
+      </div>    
+    </ng-template>
+    <ng-template   pTemplate="header">
+      <tr >
+        <th pSortableColumn="titre">Titre <p-sortIcon field="price"></p-sortIcon></th>
+        <th pSortableColumn="contenu" style="min-width:10rem;">Image Background<p-sortIcon field="contenu"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pageBloc>
+      <tr>
+        <div [innerHTML]="pageBloc.titre"></div>    
+        <div class="col-6 card-title align-self-center mb-0" *ngFor="let rl of pageBloc.contenus"> 
+          <p class="m-0">{{rl.length}}</p> 
+       </div>
+        <td>  
+          <a href=""><img class="card-img-top img-responsive" 
+             src="{{this.pageAccueilService.apiServerUrl+'/api/imagePageAccueil/'+pageBloc.id}}" class="shadow-4" style="height: 75px;width: 75px" alt="">
+          </a>
+        </td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil"  (click)="showUpdatDialog(pageBloc)" class="p-button-rounded p-button-info mr-2" ></button>   
+        </td>
+        <td>
+          <button type="button" (click)="onLoadAccueil(pageBloc)"   pButton icon="pi pi-external-link" label="View"></button>
+       </td>
+        <td>
+          <button pButton pRipple icon="pi pi-trash"  (click)="deleteBloc(pageBloc)" class="p-button-rounded p-button-warning" ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+
+
+
+
+  
+  
+<p-dialog header="Plus" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body" [(visible)]="viewDialogVisible" [style]="{width: '75vw'}" [contentStyle]="{height: '300px'}">
+    <!-- <p class="sms" >{{pageAccueil.contenu}}</p> --> 
+
+    <div class="row"> 
+      <div class="col-7">
+        <div class="field col-12 md:col-4">
+          <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="Titre" [toggleable]="true">
+            <div [innerHTML]="pageAccueil.titre"></div>  
+            <td>
+              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2" ></button>   
+            </td>
+          </p-panel>
+          <!-- <h2>Nom:</h2>
+          {{pageAccueil.nom}} -->
+        </div>
+        <br>
+        <div class="field col-12 md:col-4">
+          <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+            <!-- <p [innerHTML]="ac.contenu11"></p> -->
+            <!-- {{pageAccueil.contenu}} -->
+          </p-panel>
+          <!-- <h2>Titre:</h2>
+          {{pageAccueil.titre}} -->
+        </div>    
+      </div>
+      <div class="col-5">
+        <div class="field col-12 md:col-4">
+          <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'"  header="Contenu" [toggleable]="true">
+            <a href=""><img class="card-img-top img-responsive"
+              src="{{this.pageAccueilService.apiServerUrl+'/api/imagePageAccueil/'+pageAccueil.id}}" style="height: 300px;width: 300px" alt="">
+            </a>
+          </p-panel> 
+          
+        </div> 
+      </div> 
+     
+    </div> 
+     
+    <ng-template pTemplate="footer">   
+        <button type="button" pButton pRipple icon="pi pi-times" (click)="viewDialogVisible=false" label="Dismiss" class="p-button-text"></button>
+    </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="pageAccueilDialog" [style]="{width: '900px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <form  [formGroup]="pageAccueilForm"  >
+ 
+      <div class="row">
+        <div class="col-7">
+          <div class="field">
+            <label for="titre">Titre</label>
+            <input type="text" pInputText id="titre" [(ngModel)]="pageAccueil.titre" formControlName="titre" required autofocus />
+            <small class="p-error" *ngIf="submitted && !pageAccueil.titre">titre is required.</small>
+          </div> 
+          <div class="field ">
+            <label for="horizontal">Ordre d'affichage</label>
+            <p-inputNumber [(ngModel)]="pageAccueil.ordre" formControlName="ordre"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+          <div class="col-6 card-title align-self-center mb-0" *ngFor="let rl of pageAccueil.contenus">
+                       
+            <p class="m-0">{{pageAccueil.contenus.length}}</p> 
+         </div> 
+          <div class="field">
+            <label for="image">Image</label>
+            <input type="file" accept="image/*" (change)="onSelectImage($event)" pInputText id="image" />
+            <img [src]="imgUrl" height="200" *ngIf="imgUrl" alt="">
+          </div> 
+
+        </div>
+        <div class="col-5">
+             <!-- Contenu de page -->
+
+            <div class="card col-md-12">
+              <p-table [value]="contenusDePagesTemp" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                  <div class="flex">
+                    <button pButton pRipple label="Ajouter contenu" icon="pi pi-plus" class="p-button-success mr-2" (click)="openContenusDePage()" ></button>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="body" let-contenusDePage>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row"> 
+                      <div class=" col-md-12 md:col-6">
+                     
+                        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="{{contenusDePage.designation}}" [toggleable]="true">
+                          
+                          <div [innerHTML]="contenusDePage.libelle"></div>
+                          <!-- <td>
+                            <button pButton pRipple icon="pi pi-pencil" (click)="onLoadAddContenuToBloc(contenusDePage)" class="p-button-rounded p-button-info mr-2" ></button>   
+                          </td> -->
+                        </p-panel>
+                        
+                          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="onDeleteContenuPageTemp(contenusDePage)" ></button>
+                      </div>
+                    </div>
+                    
+                    <br>
+                  </div>
+                </div>
+                </ng-template> 
+              </p-table>
+            </div>         
+        </div>
+      </div>
+    </form>      
+  </ng-template>   
+  
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times"  (click)="pageAccueilDialog=false"  (click)="AddContenuDialog=false" class="p-button-text" (click)="hideDialog()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addData()" ></button> 
+  </ng-template>
+ 
+  
+</p-dialog>
+
+
+
+<!-- Modification de bloc -->
+
+<p-dialog [(visible)]="UpdatePageAccueilDialog" [style]="{width: '900px'}" header=" Page accueil" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <form  [formGroup]="pageAccueilFormUpdate"  >  
+      <div class="row">
+        <div class="col-5">
+          <div style="display: none;" class="field">
+            <input type="text" pInputText [(ngModel)]="pageAccueilUpdate.id" formControlName="id" required autofocus />
+          </div> 
+          <div class="field">
+            <label for="titre">Titre</label>
+            
+            <input type="text" pInputText id="titre" [(ngModel)]="pageAccueilUpdate.titre" formControlName="titre" required autofocus />
+            <small class="p-error" *ngIf="submitted && !pageAccueilUpdate.titre">titre is required.</small>
+          </div> 
+          <div class="field ">
+            <label for="horizontal">Ordre d'affichage</label>
+            <p-inputNumber [(ngModel)]="pageAccueilUpdate.ordre" formControlName="ordre"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+          <div class="field">
+            <label for="image">Image</label>
+               <div>
+                <img class="card-img-top img-responsive" 
+                  src="{{this.pageAccueilService.apiServerUrl+'/api/imagePageAccueil/'+pageAccueilUpdate.id}}" style="height: 200px;width: 200px" alt="">
+               </div>
+          </div> 
+
+        
+          <div class="field">
+            <label for="image">Nouvelle Image</label>
+            <input type="file" accept="image/*" (change)="onSelectImage($event)" pInputText id="image" />
+            <img [src]="imgUrl" height="200px" *ngIf="imgUrl" alt="">           
+          </div> 
+          
+        </div>
+        <!-- pour le contenu -->
+        <div class="col-7">
+             <!-- Contenu de page -->
+
+            <div class="card col-md-12">
+              <p-table [value]="pageAccueilUpdate.contenus" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                  <div class="flex">
+                    <button pButton pRipple label="Ajouter contenu" icon="pi pi-plus" class="p-button-success mr-2" (click)="openAddContenusPageReel()" ></button>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="body" let-contenusDePage>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row"> 
+                      <div class=" col-md-12 md:col-6">
+                     
+                        <p-panel styleClass="panelStyle" [transitionOptions]="'500ms'" header="{{contenusDePage.designation}}" [toggleable]="true" >
+                          <p [innerHTML]="contenusDePage.libelle"></p>
+                        </p-panel>
+                      
+                        <td>
+                          <button pButton pRipple icon="pi pi-pencil" (click)="UpdatecontenusDePage(contenusDePage)"  class="p-button-rounded p-button-info p-button-outlined"></button>   
+                        </td>
+                        <td>  
+                          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined" (click)="onDeleteContenuPage(contenusDePage)" ></button>
+                        </td>
+                      </div>
+                    </div>   
+                    <br>
+                  </div>
+                </div>
+                </ng-template> 
+              </p-table>
+            </div>         
+        </div>
+      </div>
+    </form>      
+  </ng-template>   
+  
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" (click)="UpdatePageAccueilDialog=false" class="p-button-text" (click)="hideDialog()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="updateData()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+
+
+<!-- Ajouter Contenu -->
+
+<p-dialog [(visible)]="AddContenuDialog" [style]="{width: '550px'}" header=" Add Contenu" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <form  [formGroup]="contenusDePageForm">      
+      <div class="field">
+        <label for="libelle">Libelle</label>
+        <p-editor  [(ngModel)]="contenusDePage.libelle" formControlName="libelle" ></p-editor>
+        <input type="text" pInputText id="libelle" [(ngModel)]="contenusDePage.libelle" formControlName="libelle" required autofocus />
+        <small class="p-error" *ngIf="submitted && !contenusDePage.libelle">contenu is required.</small>
+      </div> 
+      <br><br>
+      <div class="col-12" >
+        <div class="row" >
+          <div class="col-md-6 col-sm-12 ">
+            <label for="horizontal">Décalage a partir du haut</label>
+            <p-inputNumber [(ngModel)]="contenusDePage.decalageHaut" formControlName="decalageHaut"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+          <div class="col-md-6 col-sm-12 ">
+            <label for="horizontal">Décalage a partir de la gauche</label>
+            <p-inputNumber [(ngModel)]="contenusDePage.decalageGauche" formControlName="decalageGauche"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+        </div> 
+      </div>  
+    </form>      
+  </ng-template>   
+    
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveContenusdePage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+<!-- Update Contenu -->
+<p-dialog [(visible)]="UpdateContenuDialog" [style]="{width: '550px'}" header=" Add Contenu" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <form  [formGroup]="contenusDePageFormUpdate">
+ 
+    
+      <div class="field">
+        <label for="libelle">Libelle</label>
+        <p-editor  [(ngModel)]="contenusDePageUpdate.libelle" formControlName="libelle" ></p-editor>
+      
+        <!-- <input type="text" pInputText id="libelle" [(ngModel)]="contenusDePageUpdate.libelle" formControlName="libelle" required autofocus /> -->
+        <small class="p-error" *ngIf="submitted && !contenusDePageUpdate.libelle">contenu is required.</small>
+      </div> 
+      <br><br>
+      <div class="col-12" >
+        <div class="row" >
+          <div class="col-md-6 col-sm-12 ">
+            <label for="horizontal">Décalage a partir du haut</label>
+            <p-inputNumber [(ngModel)]="contenusDePageUpdate.decalageHaut" formControlName="decalageHaut"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+          <div class="col-md-6 col-sm-12 ">
+            <label for="horizontal">Décalage a partir de la gauche</label>
+            <p-inputNumber [(ngModel)]="contenusDePageUpdate.decalageGauche" formControlName="decalageGauche"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+        </div> 
+      </div>  
+    </form>      
+  </ng-template>   
+  
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialogReel()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="OnUdpateContenusdePage()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+<!-- Ajouter Contenu Reel directement-->
+
+<p-dialog [(visible)]="AddContenuReelDialog" [style]="{width: '550px'}" header=" Add Contenu" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    
+    <form  [formGroup]="  contenusDePageForm">
+ 
+     
+      <div class="field">
+        <label for="libelle">Libellee</label>
+        <p-editor  [(ngModel)]="contenusDePage.libelle" formControlName="libelle" required autofocus ></p-editor>
+        <!-- <input type="text" pInputText id="libelle" [(ngModel)]="contenusDePage.libelle" formControlName="libelle" required autofocus /> -->
+        <small class="p-error" *ngIf="submitted && !contenusDePage.libelle">contenu is required.</small>
+      </div> 
+      <br><br>
+      <div class="col-12" >
+        <div class="row" >
+          <div class="col-md-6 col-sm-12 ">
+            <label for="horizontal">Décalage a partir du haut</label>
+            <p-inputNumber [(ngModel)]="contenusDePage.decalageHaut" formControlName="decalageHaut"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+          <div class="col-md-6 col-sm-12 ">
+            <label for="horizontal">Décalage a partir de la gauche</label>
+            <p-inputNumber [(ngModel)]="contenusDePage.decalageGauche" formControlName="decalageGauche"  [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="5"
+            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" >
+            </p-inputNumber>
+          </div>
+        </div> 
+      </div>   
+    </form>      
+  </ng-template>   
+  
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialogReel()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveContenusdePageReel()" ></button> 
+  </ng-template>
+</p-dialog>
+
+
+
+<!-- <p-dialog [(visible)]="AddContenuToBlocDialog" [style]="{width: '800px',height: '500px'}" header=" Add Contenu To Bloc" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <h2>{{contenusDePage.libelle}}</h2>    
+    <div class="" *ngFor="let cont of pageBlocs">
+        {{cont.nom}}
+    </div>  
+  </ng-template>   
+  
+  <p-multiSelect [options]="pageBlocs" (onChange)="multileSelected()" [(ngModel)]="selectedBlocs" defaultLabel="Select a City" optionLabel="nom"
+	display="chip"></p-multiSelect>
+  
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+   <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="onAddContenuToBloc()" ></button> 
+  </ng-template>
+</p-dialog> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="containtFirst" >
+    <div class="color-overly">
+      <div class="container">
+        <div class="col-12" *ngFor="let ac of accueils">
+          <div class="row under-nav">
+            <div class="col-8">      
+                 <h1>Titre Page 1:</h1> 
+                <h3>{{ac.titre11}}</h3>
+            </div> 
+          </div>
+         
+          <div class="row ">
+            <div class="col-8">
+              <br>
+              <h2>Contenu Page 1:</h2> 
+              <p>{{ac.contenu11}}</p>
+            </div>
+          </div>
+          <br> 
+          <br>
+          <br>
+     <!-- page 2 
+          <div class="row under-nav">
+            <div class="col-8">      
+                 <h1>Titre Page 2:</h1> 
+                <h3>{{ac.titre22}}</h3>
+            </div> 
+          </div>
+          <div class="row ">
+            <div class="col-6">
+              <br>
+              <h2>Contenu gauche :</h2> 
+              <p>{{ac.contenu21}}</p>
+            </div>
+            <div class="col-6">
+                <br>
+                <h2>Contenu droite :</h2> 
+                <p>{{ac.contenu22}}</p>
+              </div>
+          </div>
+          
+          <br> 
+          <br>
+          <br>
+          <!-- page 3 
+
+
+          <div class="row under-nav">
+            <div class="col-8">      
+                 <h1>Titre Page 3:</h1> 
+                <h3>{{ac.titre33}}</h3>
+            </div> 
+          </div>    
+          <div class="row ">
+            <div class="col-6">
+              <br>
+              <h2>Contenu gauche</h2> 
+              <p>{{ac.contenu31}}</p>
+            </div>
+            <div class="col-6">
+                <br>
+                <h2>Contenu droite</h2> 
+                <p>{{ac.contenu32}}</p>
+              </div>
+          </div>
+
+            <!-- <div class="container" >
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add User
+              </button>       
+           </div> 
+
+           <div class="row">
+
+            <div class="col-md-4" >
+                <button type="button" class="btn btn-primary" (click)="onLoadAccueil(ac)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Update Info 
+                </button>      
+              
+              </div> 
+              <div class="col-md-4">
+                <a  class="btn btn-warning tooltips" type="button" routerLink="/accueil" data-original-title="Delete"><i class="fa fa-view"></i> Voir la page</a>
+              </div>
+           </div> 
+      </div>
+    
+  </div>
+</div>  --> 
+
+    
+<!-- Modal 1 -->
+<!-- <div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div *ngIf="message" class="modal-header">
+            <span class="alert alert-info">{{message}}</span>
+        </div>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Info</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+               <form [formGroup]="accueilForm"  (ngSubmit)="saveOrUpdateAtout()">
+   -->
+                <!-- page 1 -->
+                <!-- <div class="form-floating mb-3">
+                  <input type="text" [(ngModel)]="accueil.titre11"  name="titre11"  id="titre11" formControlName="titre11" class="form-control">
+                  <label for="titre1" placeholder="Entrer ici">Titre 1</label>
+               </div>   -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Titre 1" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.titre11" formControlName="titre11"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+    
+               <!-- <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="accueil.contenu11"  name="contenu11" id="contenu11" class="form-control" formControlName="contenu11"  style="height: 150px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 1</label>
+               </div> -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Contenu Gauche" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.contenu11" formControlName="contenu11"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+            <!-- page 2 -->
+               <!-- <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="accueil.titre22"  name="titre22"  id="titre22" formControlName="titre22" class="form-control">
+                <label for="titre1" placeholder="Entrer ici">Titre 2</label>
+               </div>   -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Titre 2" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.titre22" formControlName="titre22"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+
+               <!-- <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="accueil.contenu21"  name="contenu21" id="contenu21" class="form-control" formControlName="contenu21"  style="height: 200px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 2</label>
+               </div> -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Contenu Gauche" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.contenu21" formControlName="contenu21"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+
+               <!-- <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="accueil.contenu22"  name="contenu22" id="contenu22" class="form-control" formControlName="contenu22"  style="height: 200px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 2</label>
+               </div> -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Contenu Gauche" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.contenu22" formControlName="contenu22"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+
+               <!-- page 3 -->
+               <!-- <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="accueil.titre33"  name="titre33"  id="titre33" formControlName="titre33" class="form-control">
+                <label for="titre1" placeholder="Entrer ici">Titre 3</label>
+               </div>   -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Titre 3" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.titre33" formControlName="titre33"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+
+               <!-- <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="accueil.contenu31"  name="contenu31" id="contenu31" class="form-control" formControlName="contenu31"  style="height: 200px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 3</label>
+               </div>   -->
+               <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Contenu Gauche" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.contenu31" formControlName="contenu31"  ></angular-editor>
+                </div>  
+              </p-fieldset> -->
+
+               <!-- <div class="form-floating mb-3">
+                <textarea type="text" [(ngModel)]="accueil.contenu32"  name="contenu32" id="contenu32" class="form-control" formControlName="contenu32"  style="height: 200px">  </textarea>
+                <label for="titre1" placeholder="Entrer Le text">Contenu 3</label>
+               </div> -->
+
+              <!-- <p-fieldset styleClass="panelStyle"   [transitionOptions]="'500ms'" legend="Contenu Gauche" [toggleable]="true">
+                <div class="form-floating mb-3">
+                    <angular-editor [placeholder]="'Enter text here...' "[config]="editorConfig"  [(ngModel)]="accueil.contenu32" formControlName="contenu32"  ></angular-editor>
+                </div>  
+              </p-fieldset>  -->
+                 
+             <!-- <button   id="btnSend" class="btn btn-primary" type="submit" >Enregistrer</button>
+              </form>  
+        </div>    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"    data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div> 
+  </div>
+  
+     -->
+
+

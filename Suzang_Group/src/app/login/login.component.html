@@ -1,0 +1,80 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                
+                <mat-card>
+                    <div class="container text-center">
+                       <img src="../../assets/images/PAGE SITE SUZANG-05DASH.png"  alt="">
+                    </div> 
+                    <h1 class="text-center">Login ici !</h1>
+                        <!-- {{loginData | json}}   -->
+                           
+                    <form   class="example-form" (ngSubmit)="formSubnit()">
+                        <a routerLink="/accueil">Aller à l'ACCUEIL</a>
+                        <!-- <div class="form-floating mb-3">
+                            <input type="text" [(ngModel)]="loginData.username"  name="username" name="username" formControlName="username" class="form-control" id="floatingInput" placeholder="username">
+                            <label for="floatingInput">Entrez un mouveau</label>
+                        </div> 
+
+                        <div class="form-floating mb-3">
+                            <input type="password" [(ngModel)]="loginData.password"  name="password" formControlName="password" class="form-control" id="floatingInput" placeholder="password">
+                            <label for="floatingInput">Entrez un mouveau Mot de pass</label>
+                        </div>
+
+                        <div class="container text-center" >
+                            <button mat-button id="btnSend" type="submit">Login</button>
+                        </div>
+
+                        <div class="input-field s12"> 
+                            <a routerLink="/forgot-password">Mot de passe oublié ?</a>
+                            <a style="margin-left: 1em;" routerLink="/home/sign-up">Créer un compte</a> 
+                        </div>
+
+                    </form>-->
+                          
+                          
+                         <div class="row"> 
+                            <mat-form-field class="full-width" appearance="outline">
+                                <input [(ngModel)]="loginData.username"  type="text"  name="username"
+                                 matInput required  placeholder="Entrer ici"/>
+                                 <mat-label>Username</mat-label>
+                            </mat-form-field>  
+                        </div> 
+                        <div class="row">
+                            <mat-form-field class="full-width" appearance="outline">
+                                
+                                <input [(ngModel)]="loginData.password"  name="password" 
+                                matInput required type="password" placeholder="Entrer ici"/>
+                                <mat-label>Password</mat-label>
+                            </mat-form-field>
+                        </div>
+                        <div class="container text-center" >
+                            <button mat-button id="btnSend" type="submit">Login</button>
+                        </div>
+
+                        <div  id="link" class="input-field s12"> 
+                            <a  routerLink="/forgot-password">Mot de passe oublié ?</a>
+                           
+                         </div>
+
+                    </form>  
+                    
+                    <!-- <form class="example-form">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Favorite food</mat-label>
+                          <input matInput placeholder="Ex. Pizza" value="Sushi">
+                        </mat-form-field>
+                      
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Leave a comment</mat-label>
+                          <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                        </mat-form-field>
+                      </form> -->
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+</div>
+
